@@ -525,23 +525,24 @@ const BulkTagActions: React.FC<InterfaceTagActionsProps> = ({
       <form id="tagActionForm" onSubmit={handleTagAction}>
         <div className={styles.scrollContainer}>
           {selectedTags.length === 0 ? (
-            <div style={{ margin: 'auto', color: 'var(--gray-500)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-              <i className="fa fa-tags" style={{ fontSize: '24px', opacity: 0.5 }} />
+            <div className={styles.emptyState}>
+              <i className={`fa fa-tags ${styles.emptyStateIcon}`} />
               <span>{t('noTagSelected')}</span>
             </div>
           ) : (
             selectedTags.map((tag) => (
               <div key={tag.id} className={styles.tagBadge}>
                 <span>{tag.name}</span>
-                <button
+                <Button
                   type="button"
+                  variant="plain"
                   className={styles.removeMemberChipButton}
                   onClick={() => toggleTagSelection(tag, false)}
                   data-testid={`clearSelectedTag${tag.id}`}
                   aria-label={t('remove')}
                 >
                   <i className="fa fa-times" aria-hidden="true" />
-                </button>
+                </Button>
               </div>
             ))
           )}

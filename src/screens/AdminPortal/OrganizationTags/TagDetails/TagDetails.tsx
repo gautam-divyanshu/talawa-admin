@@ -73,8 +73,6 @@ import BulkTagActions from 'components/AdminPortal/Tags/BulkTagActions/BulkTagAc
 import { useModalState } from 'shared-components/CRUDModalTemplate';
 import { DeleteModal } from 'shared-components/CRUDModalTemplate/DeleteModal';
 import EmptyState from 'shared-components/EmptyState/EmptyState';
-import { PAGE_SIZE } from 'types/ReportingTable/utils';
-import TableLoader from 'shared-components/TableLoader/TableLoader';
 
 export const getManageTagErrorMessage = (error: unknown): string => {
   if (error instanceof Error) {
@@ -263,26 +261,28 @@ function TagDetails(): JSX.Element {
             className={styles.topBreadcrumb}
             data-testid="manage-tag-top-breadcrumb"
           >
-            <button
-              className={`btn btn-link ${styles.topBreadcrumbLink}`}
+            <Button
+              variant="plain"
+              className={styles.topBreadcrumbLink}
               onClick={() => navigate(`/admin/orgtags/${orgId}`)}
               data-testid="allTagsBtn"
             >
               {tOrganizationTags('tags')}
-            </button>
+            </Button>
             {folderBreadcrumbs.map((folder) => (
               <div key={folder.id} className={styles.topBreadcrumbItemWrap}>
                 <span
                   className={styles.topBreadcrumbSeparator}
                   aria-hidden="true"
                 />
-                <button
-                  className={`btn btn-link ${styles.topBreadcrumbLink}`}
+                <Button
+                  variant="plain"
+                  className={styles.topBreadcrumbLink}
                   onClick={() => redirectToFolder(folder.id)}
                   data-testid="redirectToFolder"
                 >
                   {folder.name}
-                </button>
+                </Button>
               </div>
             ))}
             {currentTagName && (
@@ -303,39 +303,24 @@ function TagDetails(): JSX.Element {
           </p>
         </div>
         <div className="page-header-actions">
-          <button
-            className="btn btn-primary"
+          <Button
+            variant="primary"
             onClick={addPeopleToTagModal.open}
             data-testid="addPeopleToTagBtn"
           >
             + {t('addPeopleToTag')}
-          </button>
+          </Button>
         </div>
       </div>
 
-      <div
-        className="toolbar"
-        style={{
-          display: 'flex',
-          gap: '12px',
-          alignItems: 'center',
-          marginBottom: '20px',
-        }}
-      >
+      <div className={`toolbar ${styles.toolbarRow}`}>
         <input
           type="text"
-          className="search-input"
+          className={`search-input ${styles.searchInput}`}
           placeholder={tCommon('searchByName')}
           value={assignedMemberSearchInput}
           onChange={(e) => setAssignedMemberSearchInput(e.target.value.trim())}
           data-testid="searchInput"
-          style={{
-            flex: 1,
-            padding: '8px 12px',
-            border: '1px solid var(--gray-200)',
-            borderRadius: 'var(--radius-md)',
-            fontSize: '13px',
-          }}
         />
       </div>
 
@@ -364,10 +349,7 @@ function TagDetails(): JSX.Element {
                   >
                     <thead>
                       <tr>
-                        <th
-                          scope="col"
-                          style={{ width: 'calc(48px)', textAlign: 'center' }}
-                        >
+                        <th scope="col" className={styles.serialNumberColumn}>
                           <input
                             type="checkbox"
                             checked={
@@ -381,7 +363,7 @@ function TagDetails(): JSX.Element {
                         </th>
                         <th scope="col">#</th>
                         <th scope="col">{tCommon('userName')}</th>
-                        <th scope="col" style={{ textAlign: 'center' }}>
+                        <th scope="col" className={styles.centeredColumn}>
                           {tCommon('actions')}
                         </th>
                       </tr>
@@ -394,7 +376,7 @@ function TagDetails(): JSX.Element {
                             selectedMemberKeys.has(row._id) ? 'selected' : ''
                           }
                         >
-                          <td style={{ textAlign: 'center' }}>
+                          <td className={styles.centeredColumn}>
                             <input
                               type="checkbox"
                               checked={selectedMemberKeys.has(row._id)}
@@ -415,7 +397,7 @@ function TagDetails(): JSX.Element {
                               {row.name ?? ''}
                             </span>
                           </td>
-                          <td style={{ textAlign: 'center' }}>
+                          <td className={styles.centeredColumn}>
                             <Link
                               to={`/admin/member/${orgId}/${row._id}`}
                               state={{ id: row._id }}
@@ -441,9 +423,10 @@ function TagDetails(): JSX.Element {
               </div>
             </div>
             <div className={styles.actionsPanelBody}>
-              <button
+              <Button
                 type="button"
-                className={`btn ${styles.assignTagActionButton}`}
+                variant="plain"
+                className={styles.assignTagActionButton}
                 onClick={() => {
                   setTagActionType('assignToTags');
                   tagActionsModal.open();
@@ -457,10 +440,11 @@ function TagDetails(): JSX.Element {
                   />
                   <span>{t('moveToTags')}</span>
                 </div>
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
-                className={`btn ${styles.removeTagActionButton}`}
+                variant="plain"
+                className={styles.removeTagActionButton}
                 onClick={() => {
                   setTagActionType('removeFromTags');
                   tagActionsModal.open();
@@ -474,11 +458,12 @@ function TagDetails(): JSX.Element {
                   />
                   <span>{t('removeFromTags')}</span>
                 </div>
-              </button>
+              </Button>
               <hr className={styles.tagActionsDivider} />
-              <button
+              <Button
                 type="button"
-                className={`btn ${styles.bulkUnassignActionButton}`}
+                variant="plain"
+                className={styles.bulkUnassignActionButton}
                 onClick={handleBulkUnassignClick}
                 data-testid="bulkUnassignBtn"
                 disabled={selectedMemberKeys.size === 0}
@@ -490,7 +475,7 @@ function TagDetails(): JSX.Element {
                   />
                   <span>{`${tCommon('unassign')} ${tCommon('selected')}`}</span>
                 </div>
-              </button>
+              </Button>
             </div>
           </div>
         </div>

@@ -134,6 +134,35 @@
 
 .nameIcon {
   color: var(--color-gray-500);
+  margin-right: var(--space-2);
+}
+
+.buttonIcon {
+  margin-right: var(--space-2);
+}
+
+.errorBox {
+  border-radius: var(--space-5);
+  margin: var(--space-5) 0;
+}
+
+.errorTitle {
+  text-align: center;
+}
+
+.toolbarRow {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.searchInput {
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-1) solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
 }
 
 .orgUserTagsScrollableDiv {

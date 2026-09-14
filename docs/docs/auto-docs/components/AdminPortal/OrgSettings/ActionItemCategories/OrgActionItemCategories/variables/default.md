@@ -6,4 +6,4 @@
 
 > `const` **default**: `FC`\<`IActionItemCategoryProps`\>
 
-Defined in: [src/components/AdminPortal/OrgSettings/ActionItemCategories/OrgActionItemCategories.tsx:70](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/components/AdminPortal/OrgSettings/ActionItemCategories/OrgActionItemCategories.tsx#L70)
+Defined in: [src/components/AdminPortal/OrgSettings/ActionItemCategories/OrgActionItemCategories.tsx:32](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/components/AdminPortal/OrgSettings/ActionItemCategories/OrgActionItemCategories.tsx#L32)

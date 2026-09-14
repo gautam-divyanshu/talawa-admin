@@ -6,7 +6,7 @@
 
 > **getRootFolderIds**(`folderStateMap`): `string`[]
 
-Defined in: [src/components/AdminPortal/Tags/BulkTagActions/components/TagTreeRenderer.tsx:88](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/components/AdminPortal/Tags/BulkTagActions/components/TagTreeRenderer.tsx#L88)
+Defined in: [src/components/AdminPortal/Tags/BulkTagActions/components/TagTreeRenderer.tsx:89](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/components/AdminPortal/Tags/BulkTagActions/components/TagTreeRenderer.tsx#L89)
 
 Returns root folder ids sorted by folder name.
 

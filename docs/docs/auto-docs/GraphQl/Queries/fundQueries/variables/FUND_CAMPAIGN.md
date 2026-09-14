@@ -6,7 +6,7 @@
 
 > `const` **FUND\_CAMPAIGN**: `DocumentNode`
 
-Defined in: [src/GraphQl/Queries/fundQueries.ts:63](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/GraphQl/Queries/fundQueries.ts#L63)
+Defined in: [src/GraphQl/Queries/fundQueries.ts:64](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/GraphQl/Queries/fundQueries.ts#L64)
 
 Query to fetch a specific fund by its ID, along with its associated campaigns.
 

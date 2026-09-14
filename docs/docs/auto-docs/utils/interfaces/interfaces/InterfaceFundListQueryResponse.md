@@ -4,7 +4,7 @@
 
 # Interface: InterfaceFundListQueryResponse
 
-Defined in: [src/utils/interfaces.ts:1379](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1379)
+Defined in: [src/utils/interfaces.ts:1382](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1382)
 
 Defines the fund list query response structure for organization funds.
 
@@ -14,7 +14,7 @@ Defines the fund list query response structure for organization funds.
 
 > **organization**: `object`
 
-Defined in: [src/utils/interfaces.ts:1380](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1380)
+Defined in: [src/utils/interfaces.ts:1383](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1383)
 
 #### funds
 

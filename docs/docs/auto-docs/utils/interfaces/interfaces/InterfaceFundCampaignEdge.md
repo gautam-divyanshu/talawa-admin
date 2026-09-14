@@ -4,7 +4,7 @@
 
 # Interface: InterfaceFundCampaignEdge
 
-Defined in: [src/utils/interfaces.ts:1335](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1335)
+Defined in: [src/utils/interfaces.ts:1338](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1338)
 
 Defines the structure for fund information.
 
@@ -14,7 +14,7 @@ Defines the structure for fund information.
 
 > **node**: `object`
 
-Defined in: [src/utils/interfaces.ts:1336](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1336)
+Defined in: [src/utils/interfaces.ts:1339](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1339)
 
 #### amountRaised?
 

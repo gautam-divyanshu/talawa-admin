@@ -11,6 +11,7 @@ import {
   UPDATE_USER_TAG,
 } from 'GraphQl/Mutations/TagMutations';
 import type { InterfaceManageTagModalProps } from 'types/AdminPortal/Tags/interface';
+import styles from './EditTagModal.module.css';
 
 /**
  * Modal component for editing and deleting a tag.
@@ -139,24 +140,14 @@ const EditTagModal: React.FC<InterfaceManageTagModalProps> = ({
         data-testid={modalTestId}
         id="crud-edit-tag-form"
         customFooter={
-          <div
-            style={{
-              display: 'flex',
-              gap: 'var(--space-4)',
-              justifyContent: 'flex-end',
-              width: '100%',
-            }}
-          >
+          <div className={styles.footer}>
             <Button
               type="button"
               variant="danger"
               disabled={loading}
               onClick={() => setIsDeleteOpen(true)}
             >
-              <i
-                className="fa fa-trash"
-                style={{ marginRight: '8px' }}
-              />
+              <i className={`fa fa-trash ${styles.buttonIcon}`} />
               {tCommon('delete') as string}
             </Button>
             <Button
@@ -165,16 +156,13 @@ const EditTagModal: React.FC<InterfaceManageTagModalProps> = ({
               variant="primary"
               disabled={loading || submitDisabled}
             >
-              <i
-                className="fa fa-edit"
-                style={{ marginRight: '8px' }}
-              />
+              <i className={`fa fa-edit ${styles.buttonIcon}`} />
               {tCommon('save') as string}
             </Button>
           </div>
         }
       >
-        <div style={{ marginBottom: 'var(--space-5)' }}>
+        <div className={styles.fieldWrapper}>
           <FormTextField
             name="managedTagName"
             label={t('tagLabel') as string}

@@ -41,6 +41,7 @@ import EmptyState from 'shared-components/EmptyState/EmptyState';
 import Group from '@mui/icons-material/Group';
 import Search from '@mui/icons-material/Search';
 import ErrorPanel from 'shared-components/ErrorPanel';
+import Button from 'shared-components/Button/Button';
 
 interface InterfaceRequestsListItem {
   membershipRequestId: string;
@@ -243,14 +244,7 @@ const Requests = (): JSX.Element => {
         <div className="page-header-left">
           <h1 className="page-title">
             {t('requests.title')}{' '}
-            <span
-              className="badge badge-orange"
-              style={{
-                fontSize: '13px',
-                verticalAlign: 'middle',
-                marginLeft: '8px',
-              }}
-            >
+            <span className="badge badge-orange request-badge">
               {displayedRequests.length} {t('requests.pending')}
             </span>
           </h1>
@@ -258,29 +252,14 @@ const Requests = (): JSX.Element => {
         </div>
       </div>
 
-      <div
-        className="toolbar"
-        style={{
-          display: 'flex',
-          gap: '12px',
-          alignItems: 'center',
-          marginBottom: '20px',
-        }}
-      >
+      <div className="toolbar">
         <input
           type="text"
-          className="search-input"
+          className="search-bar"
           placeholder={t('requests.searchRequests')}
           value={searchByName}
           onChange={(e) => handleSearch(e.target.value)}
           data-testid="searchByName"
-          style={{
-            flex: 1,
-            padding: '8px 12px',
-            border: '1px solid var(--gray-200)',
-            borderRadius: 'var(--radius-md)',
-            fontSize: '13px',
-          }}
         />
       </div>
 
@@ -369,7 +348,8 @@ const Requests = (): JSX.Element => {
                         </td>
                         <td>
                           <div className="request-actions">
-                            <button
+                            <Button
+                              variant="plain"
                               className="btn btn-primary btn-sm"
                               data-testid={`acceptMembershipRequestBtn${req.membershipRequestId}`}
                               onClick={async () => {
@@ -377,16 +357,17 @@ const Requests = (): JSX.Element => {
                               }}
                             >
                               {t('requests.accept')}
-                            </button>
-                            <button
+                            </Button>
+                            <Button
+                              variant="plain"
                               className="btn btn-secondary btn-sm"
                               data-testid={`rejectMembershipRequestBtn${req.membershipRequestId}`}
                               onClick={async () => {
                                 await handleRejectUser(req.membershipRequestId);
                               }}
                             >
-                              {t('requests.decline')}
-                            </button>
+                              {t('requests.reject')}
+                            </Button>
                           </div>
                         </td>
                       </tr>

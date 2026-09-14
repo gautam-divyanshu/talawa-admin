@@ -209,6 +209,12 @@
   margin-left: auto;
   flex-shrink: 0;
 }
+.sidebar-user-profile-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
 
 /* Context switcher */
 .context-switcher {
@@ -997,6 +1003,9 @@ select.form-input {
 .toolbar .search-bar {
   flex: 1;
   min-width: 200px;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
 }
 
 /* ── GRIDS ──────────────────────────────────────────────────────────────────── */
@@ -1843,4 +1852,11 @@ textarea.form-input {
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-card);
+}
+
+/* ── Requests (generic) ─────────────────────────────────────────────────────── */
+.request-badge {
+  font-size: 13px;
+  vertical-align: middle;
+  margin-left: 8px;
 }

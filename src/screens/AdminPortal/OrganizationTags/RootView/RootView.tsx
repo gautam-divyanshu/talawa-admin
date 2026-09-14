@@ -34,6 +34,7 @@ import { PAGE_SIZE } from 'types/ReportingTable/utils';
 import { FormTextField } from 'shared-components/FormFieldGroup/FormTextField';
 import EmptyState from 'shared-components/EmptyState/EmptyState';
 import EditFolderModal from 'components/AdminPortal/Tags/Modals/EditFolderModal/EditFolderModal';
+import Button from 'shared-components/Button/Button';
 import type {
   InterfaceOrganizationTagCountsQuery,
   InterfaceOrganizationTagFoldersQuery,
@@ -130,13 +131,10 @@ function RootView(): JSX.Element {
 
   const showErrorMessage = (message: string): JSX.Element => {
     return (
-      <div
-        className={styles.errorContainer}
-        style={{ borderRadius: 'var(--space-5)', margin: '16px 0' }}
-      >
+      <div className={`${styles.errorContainer} ${styles.errorBox}`}>
         <div className={styles.errorMessage}>
           <WarningAmberRounded fontSize="large" className={styles.errorIcon} />
-          <h6 style={{ textAlign: 'center' }}>
+          <h6 className={styles.errorTitle}>
             {t('errorLoadingTagsData')}
             <br />
             {message}
@@ -219,7 +217,6 @@ function RootView(): JSX.Element {
           <div
             className={styles.pageBreadcrumb}
             data-testid="organizationTagsRootBreadcrumb"
-            style={{ marginBottom: 'var(--space-3)' }}
           >
             <span className={styles.breadcrumbCurrent}>{t('tags')}</span>
             <span className={styles.breadcrumbDivider}>/</span>
@@ -230,8 +227,8 @@ function RootView(): JSX.Element {
           </p>
         </div>
         <div className="page-header-actions">
-          <button
-            className="btn btn-primary"
+          <Button
+            variant="primary"
             onClick={() => {
               setFolderName('');
               setFolderNameTouched(false);
@@ -241,33 +238,18 @@ function RootView(): JSX.Element {
             aria-label={t('createTag')}
           >
             + {t('createTag')}
-          </button>
+          </Button>
         </div>
       </div>
 
-      <div
-        className="toolbar"
-        style={{
-          display: 'flex',
-          gap: '12px',
-          alignItems: 'center',
-          marginBottom: '20px',
-        }}
-      >
+      <div className={`toolbar ${styles.toolbarRow}`}>
         <input
           type="text"
-          className="search-input"
+          className={`search-input ${styles.searchInput}`}
           placeholder={tCommon('searchByName')}
           value={folderSearchName}
           onChange={(e) => setFolderSearchName(e.target.value.trim())}
           data-testid="searchByName"
-          style={{
-            flex: 1,
-            padding: '8px 12px',
-            border: '1px solid var(--gray-200)',
-            borderRadius: 'var(--radius-md)',
-            fontSize: '13px',
-          }}
         />
       </div>
 
@@ -322,13 +304,9 @@ function RootView(): JSX.Element {
                           </span>
                         </td>
                         <td>
-                          <button
-                            className={`btn btn-link ${styles.folderNameButton}`}
-                            style={{
-                              padding: 0,
-                              textDecoration: 'none',
-                              color: 'var(--primary-color, #10b981)',
-                            }}
+                          <Button
+                            variant="plain"
+                            className={styles.folderNameButton}
                             data-testid="tagName"
                             onClick={() => redirectToChildFolders(row.id)}
                             aria-label={tCommon('viewChildFoldersOf', {
@@ -337,11 +315,10 @@ function RootView(): JSX.Element {
                           >
                             <i
                               className={`fa fa-folder ${styles.nameIcon}`}
-                              style={{ marginRight: 'var(--space-2)' }}
                               aria-hidden="true"
                             />
                             {row.name}
-                          </button>
+                          </Button>
                         </td>
                         <td>
                           {renderCountLink(
@@ -360,19 +337,19 @@ function RootView(): JSX.Element {
                           <span>{formatCreatedAt(row.createdAt ?? null)}</span>
                         </td>
                         <td>
-                          <button
-                            className="btn btn-secondary btn-sm"
+                          <Button
+                            variant="secondary"
+                            size="sm"
                             onClick={() => showManageFolderModal(row)}
                             data-testid="manageTagBtn"
                             aria-label={`${tCommon('edit')} ${row.name ?? ''}`.trim()}
                           >
                             <i
-                              className="fa fa-edit"
-                              style={{ marginRight: 'var(--space-2)' }}
+                              className={`fa fa-edit ${styles.buttonIcon}`}
                               aria-hidden="true"
                             />
                             {tCommon('edit')}
-                          </button>
+                          </Button>
                         </td>
                       </tr>
                     );

@@ -29,8 +29,8 @@
 .actionsPanel {
   flex: 1;
   background: var(--surface, var(--color-white));
-  border-radius: 12px;
-  border: 1px solid var(--gray-200, #e5e7eb);
+  border-radius: var(--radius-xl);
+  border: var(--border-1) solid var(--gray-200, #e5e7eb);
   overflow: hidden;
   height: fit-content;
 }
@@ -38,8 +38,8 @@
 .actionsPanelHeader {
   background-color: var(--gray-50, #f9fafb);
   color: var(--gray-900, #111827);
-  padding: 16px 16px;
-  border-bottom: 1px solid var(--gray-200, #e5e7eb);
+  padding: var(--space-5) var(--space-5);
+  border-bottom: var(--border-1) solid var(--gray-200, #e5e7eb);
 }
 
 .actionsPanelTitle {
@@ -51,8 +51,8 @@
 .actionsPanelBody {
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  gap: 16px;
+  padding: var(--space-6);
+  gap: var(--space-5);
 }
 
 @media (max-width: 768px) {
@@ -301,14 +301,14 @@
 .assignTagActionButton[class~='btn'],
 .removeTagActionButton[class~='btn'] {
   width: 100%;
-  padding: 12px 16px;
+  padding: var(--space-4) var(--space-5);
   border: none;
-  border-radius: 12px;
+  border-radius: var(--radius-xl);
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   transition: background-color 0.15s ease;
   box-shadow: none;
   white-space: normal;
@@ -342,14 +342,14 @@
 .bulkUnassignActionButton[class~='btn']:focus,
 .bulkUnassignActionButton[class~='btn']:active {
   width: 100%;
-  padding: 12px 16px;
-  border: 1px solid var(--red-200, #fecaca);
-  border-radius: 12px;
+  padding: var(--space-4) var(--space-5);
+  border: var(--border-1) solid var(--red-200, #fecaca);
+  border-radius: var(--radius-xl);
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   transition: all 0.15s ease;
   background: var(--red-50, #fef2f2);
   color: var(--red-600, #dc2626);
@@ -376,11 +376,35 @@
   width: 100%;
   align-items: center;
   justify-content: flex-start;
-  gap: 12px;
+  gap: var(--space-4);
   text-align: left;
 }
 
 .actionButtonIcon {
-  width: 24px;
+  width: var(--space-7);
+  text-align: center;
+}
+
+.toolbarRow {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.searchInput {
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-1) solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+}
+
+.serialNumberColumn {
+  width: var(--space-10);
+  text-align: center;
+}
+
+.centeredColumn {
   text-align: center;
 }

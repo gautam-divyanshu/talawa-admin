@@ -6,6 +6,7 @@
  * applies search filters, and constructs the folder/tag hierarchy.
  */
 import InfiniteScrollLoader from 'shared-components/InfiniteScrollLoader/InfiniteScrollLoader';
+import Button from 'shared-components/Button/Button';
 import type {
   InterfaceTagFolderItem,
   InterfaceTagSelectionItem,
@@ -125,8 +126,9 @@ export const renderFolderTree = (
   const row: JSX.Element = (
     <li key={`folder-${folder.id}`} className={styles.listItem}>
       <div className={`${styles.folderRow} ${rowIndentClassName}`}>
-        <button
+        <Button
           type="button"
+          variant="plain"
           className={styles.folderToggleButton}
           onClick={() => params.onToggleFolderExpansion(folder.id)}
           data-testid={`expandFolder${folder.id}`}
@@ -140,7 +142,7 @@ export const renderFolderTree = (
             className={`fa ${isExpanded ? 'fa-chevron-down' : 'fa-chevron-right'}`}
             aria-hidden="true"
           />
-        </button>
+        </Button>
         <i className="fa fa-folder me-2" aria-hidden="true" />
         <span>{folder.name}</span>
       </div>

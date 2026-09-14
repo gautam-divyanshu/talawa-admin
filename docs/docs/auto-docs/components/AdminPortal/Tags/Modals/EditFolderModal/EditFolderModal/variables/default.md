@@ -6,7 +6,7 @@
 
 > `const` **default**: `React.FC`\<[`InterfaceManageFolderModalProps`](../../../../../../../types/AdminPortal/Tags/interface/interfaces/InterfaceManageFolderModalProps.md)\>
 
-Defined in: [src/components/AdminPortal/Tags/Modals/EditFolderModal/EditFolderModal.tsx:25](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/components/AdminPortal/Tags/Modals/EditFolderModal/EditFolderModal.tsx#L25)
+Defined in: [src/components/AdminPortal/Tags/Modals/EditFolderModal/EditFolderModal.tsx:26](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/components/AdminPortal/Tags/Modals/EditFolderModal/EditFolderModal.tsx#L26)
 
 Modal component for editing and deleting a tag folder.
 

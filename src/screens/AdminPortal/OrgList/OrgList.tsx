@@ -40,9 +40,9 @@ import EmptyState from 'shared-components/EmptyState/EmptyState';
 import Group from '@mui/icons-material/Group';
 import Search from '@mui/icons-material/Search';
 /* Alert replaced with plain div for Talawa design */
-import RBButton from 'shared-components/Button';
 import { CRUDModalTemplate } from 'shared-components/CRUDModalTemplate/CRUDModalTemplate';
 import { useModalState } from 'shared-components/CRUDModalTemplate/hooks/useModalState';
+import Button from 'shared-components/Button';
 
 interface InterfaceOrgFormState {
   addressLine1: string;
@@ -60,16 +60,16 @@ interface InterfaceOrgFormState {
  * Generates a deterministic gradient color pair for an org avatar based on the org name.
  */
 const AVATAR_GRADIENT_PALETTE = [
-  ['#3ecf8e', '#15803d'],
-  ['#3b82f6', '#2563eb'],
-  ['#f97316', '#ea580c'],
-  ['#a855f7', '#7c3aed'],
-  ['#ef4444', '#dc2626'],
-  ['#eab308', '#ca8a04'],
-  ['#06b6d4', '#0891b2'],
-  ['#ec4899', '#db2777'],
-  ['#14b8a6', '#0d9488'],
-  ['#8b5cf6', '#6d28d9'],
+  [`var(--color-avatar-1)`, `var(--color-avatar-2)`],
+  [`var(--color-avatar-3)`, `var(--color-avatar-4)`],
+  [`var(--color-avatar-5)`, `var(--color-avatar-6)`],
+  [`var(--color-avatar-7)`, `var(--color-avatar-8)`],
+  [`var(--color-avatar-9)`, `var(--color-avatar-10)`],
+  [`var(--color-avatar-11)`, `var(--color-avatar-12)`],
+  [`var(--color-avatar-13)`, `var(--color-avatar-14)`],
+  [`var(--color-avatar-15)`, `var(--color-avatar-16)`],
+  [`var(--color-avatar-17)`, `var(--color-avatar-18)`],
+  [`var(--color-avatar-19)`, `var(--color-avatar-20)`],
 ];
 
 function getAvatarGradient(name: string): string {
@@ -167,7 +167,7 @@ function OrgList(): JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
   const [typedValue, setTypedValue] = useState('');
   const [filterName, setFilterName] = useState('');
-  const [sortingState, setSortingState] = useState({
+  const [sortingState] = useState({
     option: 'Latest',
     selectedOption: 'Latest',
   });
@@ -363,14 +363,6 @@ function OrgList(): JSX.Element {
     refetchOrgs({ filter: val });
   };
 
-  const handleSortChange = (value: string | number): void => {
-    const option = String(value);
-    setSortingState({
-      option,
-      selectedOption: option,
-    });
-  };
-
   const handleChangePage = (
     _event: React.MouseEvent<HTMLButtonElement> | null,
     newPage: number,
@@ -404,7 +396,7 @@ function OrgList(): JSX.Element {
               <strong>{tLogin('emailNotVerified')}</strong>
             </div>
             <div className={styles.warningActions}>
-              <RBButton
+              <Button
                 variant="outline-primary"
                 size="sm"
                 onClick={handleResendVerification}
@@ -414,15 +406,16 @@ function OrgList(): JSX.Element {
                 {resendLoading
                   ? tCommon('loading')
                   : tLogin('resendVerification')}
-              </RBButton>
-              <button
+              </Button>
+              <Button
+                variant="plain"
                 type="button"
                 className={styles.warningDismiss}
                 onClick={handleDismissWarning}
                 aria-label="Dismiss"
               >
                 &times;
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -465,14 +458,15 @@ function OrgList(): JSX.Element {
           />
         </div>
         {role === 'administrator' && (
-          <button
+          <Button
+            variant="plain"
             type="button"
             className="btn btn-primary"
             onClick={open}
             data-testid="createOrganizationBtn"
           >
             + {t('createOrganization')}
-          </button>
+          </Button>
         )}
       </div>
 
@@ -547,11 +541,14 @@ function OrgList(): JSX.Element {
                 .join('')
                 .slice(0, 2)
                 .toUpperCase();
-              const avatarGradient = getAvatarGradient(item.name);
+              const avatarGradient = {
+                background: getAvatarGradient(item.name),
+              };
               const createdDate = new Date(item.createdAt).toLocaleDateString(
                 'en-US',
                 { month: 'short', year: 'numeric' },
               );
+              const avatarUrl = item.avatarURL || null;
               return (
                 <Link
                   key={item.id}
@@ -561,9 +558,18 @@ function OrgList(): JSX.Element {
                   <div className={styles.orgCardHeader}>
                     <div
                       className={styles.orgCardAvatar}
-                      style={{ background: avatarGradient }}
+                      style={avatarGradient}
                     >
-                      {initials}
+                      {avatarUrl ? (
+                        <img
+                          src={avatarUrl}
+                          alt={initials}
+                          crossOrigin="anonymous"
+                          className={styles.orgCardAvatar}
+                        />
+                      ) : (
+                        initials
+                      )}
                     </div>
                     <div className={styles.orgCardName}>{item.name}</div>
                   </div>
@@ -631,7 +637,7 @@ function OrgList(): JSX.Element {
               >
                 {t('goToStore')}
               </Link>
-              <RBButton
+              <Button
                 type="submit"
                 className={styles.enableEverythingBtn}
                 onClick={closeDialogModal}
@@ -639,7 +645,7 @@ function OrgList(): JSX.Element {
                 data-testid="enableEverythingForm"
               >
                 {t('enableEverything')}
-              </RBButton>
+              </Button>
             </div>
           </div>
         </section>

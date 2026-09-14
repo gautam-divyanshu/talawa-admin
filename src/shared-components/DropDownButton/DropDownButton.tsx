@@ -17,6 +17,7 @@ import { useTranslation } from 'react-i18next';
 import SearchToggle from './SearchToggle';
 import SortIcon from '@mui/icons-material/Sort';
 import FilterAltOutlined from '@mui/icons-material/FilterAltOutlined';
+import Button from 'shared-components/Button/Button';
 
 const DropDownButton: React.FC<InterfaceDropDownButtonProps> = ({
   id,
@@ -25,11 +26,9 @@ const DropDownButton: React.FC<InterfaceDropDownButtonProps> = ({
   onSelect,
   ariaLabel,
   dataTestIdPrefix = 'dropdown',
-  variant = 'outline-success',
   buttonLabel,
   icon,
   disabled = false,
-  drop,
   // i18n-ignore-next-line
   placeholder = 'Select an option',
   parentContainerStyle,
@@ -113,7 +112,6 @@ const DropDownButton: React.FC<InterfaceDropDownButtonProps> = ({
           .filter(Boolean)
           .join(' ')}
         data-testid={`${dataTestIdPrefix}-container`}
-        style={{ position: 'relative' }}
       >
         <SearchToggle
           onClick={() => setIsOpen(!isOpen)}
@@ -139,9 +137,8 @@ const DropDownButton: React.FC<InterfaceDropDownButtonProps> = ({
           <div
             role="listbox"
             aria-label={ariaLabel || tCommon('optionsSuffix')}
-            className={`${styles.dropdownMenu} ${menuClassName || ''}`}
+            className={`${styles.dropdownMenu} ${styles.searchMenu} ${menuClassName || ''}`}
             data-testid={`${dataTestIdPrefix}-menu`}
-            style={{ position: 'absolute', width: '100%', zIndex: 1000 }}
           >
             {filteredOptions.length > 0 ? (
               filteredOptions.map((opt) => (
@@ -158,19 +155,12 @@ const DropDownButton: React.FC<InterfaceDropDownButtonProps> = ({
                   ].join(' ')}
                   onClick={() => !opt.disabled && handleSelect(opt.value)}
                   data-testid={`${dataTestIdPrefix}-item-${opt.value}`}
-                  style={{ cursor: opt.disabled ? 'default' : 'pointer' }}
                 >
                   {opt.label}
                 </div>
               ))
             ) : (
-              <div
-                style={{
-                  padding: '0.5rem 1rem',
-                  textAlign: 'center',
-                  color: 'var(--gray-500)',
-                }}
-              >
+              <div className={styles.emptyOptions}>
                 {tCommon('noOptionsFound')}
               </div>
             )}
@@ -192,9 +182,9 @@ const DropDownButton: React.FC<InterfaceDropDownButtonProps> = ({
         .filter(Boolean)
         .join(' ')}
       data-testid={`${dataTestIdPrefix}-container`}
-      style={{ position: 'relative' }}
     >
-      <button
+      <Button
+        variant="plain"
         type="button"
         id={id}
         disabled={disabled}
@@ -228,7 +218,7 @@ const DropDownButton: React.FC<InterfaceDropDownButtonProps> = ({
         )}
         <span className={styles.buttonLabel}>{displayLabel}</span>
         {showCaret && <span className={styles.dropdownCaret}>&#9660;</span>}
-      </button>
+      </Button>
       {isOpen && (
         <div
           role="listbox"
@@ -237,9 +227,8 @@ const DropDownButton: React.FC<InterfaceDropDownButtonProps> = ({
               ? `${ariaLabel} ${tCommon('optionsSuffix')}`
               : tCommon('optionsSuffix')
           }
-          className={`${styles.dropdownMenu} ${menuClassName || ''}`}
+          className={`${styles.dropdownMenu} ${styles.menuPosition} ${menuClassName || ''}`}
           data-testid={`${dataTestIdPrefix}-menu`}
-          style={{ position: 'absolute', zIndex: 1000 }}
         >
           {options.map((opt) => (
             <div
@@ -253,7 +242,6 @@ const DropDownButton: React.FC<InterfaceDropDownButtonProps> = ({
               ].join(' ')}
               onClick={() => !opt.disabled && handleSelect(opt.value)}
               data-testid={`${dataTestIdPrefix}-item-${opt.value}`}
-              style={{ cursor: opt.disabled ? 'default' : 'pointer' }}
             >
               {opt.label}
             </div>

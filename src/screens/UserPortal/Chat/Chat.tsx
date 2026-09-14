@@ -31,19 +31,15 @@ import { useQuery } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import DropDownButton from 'shared-components/DropDownButton';
-import Button from 'shared-components/Button';
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
-import ContactCard from 'components/UserPortal/ContactCard/ContactCard';
 import ChatRoom from 'components/UserPortal/ChatRoom/ChatRoom';
 import AddIcon from '@mui/icons-material/Add';
 import styles from './Chat.module.css';
 import { CHATS_LIST, UNREAD_CHATS } from 'GraphQl/Queries/PlugInQueries';
 import CreateGroupChat from '../../../components/UserPortal/CreateGroupChat/CreateGroupChat';
 import CreateDirectChat from 'components/UserPortal/CreateDirectChat/CreateDirectChat';
-import type {
-  Chat as ChatType,
-  InterfaceContactCardProps,
-} from 'types/UserPortal/Chat/interface';
+import type { Chat as ChatType } from 'types/UserPortal/Chat/interface';
+import Button from 'shared-components/Button/Button';
 
 export default function Chat(): JSX.Element {
   const { t } = useTranslation('translation', { keyPrefix: 'userChat' });
@@ -187,20 +183,11 @@ export default function Chat(): JSX.Element {
       .slice(0, 2);
   };
 
-  // Avatar color palette
-  const AVATAR_COLORS = [
-    { bg: 'var(--blue-50)', color: 'var(--blue-600)' },
-    { bg: 'var(--purple-50)', color: 'var(--purple-500)' },
-    { bg: 'var(--green-50)', color: 'var(--green-700)' },
-    { bg: 'var(--orange-50)', color: 'var(--orange-500)' },
-    { bg: 'var(--red-50)', color: 'var(--red-500)' },
-  ];
-
-  const getAvatarColor = (id: string) => {
+  const getAvatarColorIndex = (id: string) => {
     let hash = 0;
     for (let i = 0; i < id.length; i++)
       hash = id.charCodeAt(i) + ((hash << 5) - hash);
-    return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
+    return Math.abs(hash) % 5;
   };
 
   return (
@@ -221,7 +208,7 @@ export default function Chat(): JSX.Element {
                 icon={
                   <AddIcon
                     data-testid="new-chat-icon"
-                    style={{ fontSize: 18 }}
+                    className={styles.iconSm}
                   />
                 }
                 buttonLabel=" "
@@ -231,7 +218,7 @@ export default function Chat(): JSX.Element {
               />
             </div>
             <div className={styles.chatSearch}>
-              <span style={{ color: 'var(--gray-400)', fontSize: 14 }}>
+              <span className={styles.searchIconWrapper}>
                 <svg
                   viewBox="0 0 24 24"
                   width="16"
@@ -254,7 +241,8 @@ export default function Chat(): JSX.Element {
               />
             </div>
             <div className={styles.chatTabs} role="tablist">
-              <button
+              <Button
+                variant="plain"
                 className={`${styles.chatTab} ${filterType === 'all' ? styles.chatTabActive : ''}`}
                 role="tab"
                 aria-selected={filterType === 'all'}
@@ -262,8 +250,9 @@ export default function Chat(): JSX.Element {
                 data-testid="allChat"
               >
                 Direct
-              </button>
-              <button
+              </Button>
+              <Button
+                variant="plain"
                 className={`${styles.chatTab} ${filterType === 'group' ? styles.chatTabActive : ''}`}
                 role="tab"
                 aria-selected={filterType === 'group'}
@@ -271,14 +260,14 @@ export default function Chat(): JSX.Element {
                 data-testid="groupChat"
               >
                 Groups
-              </button>
+              </Button>
             </div>
           </div>
 
           <div className={styles.chatList} data-testid="contactCardContainer">
             {chatsListLoading ? (
               <div className={styles.loadingContainer}>
-                <HourglassBottomIcon style={{ fontSize: 18 }} />
+                <HourglassBottomIcon className={styles.iconSm} />
                 <span>{tCommon('loading')}</span>
               </div>
             ) : chats.length === 0 ? (
@@ -291,32 +280,26 @@ export default function Chat(): JSX.Element {
                 const isUnread = (chat.unreadMessagesCount ?? 0) > 0;
                 const chatName = chat.name || 'Chat';
                 const initials = getInitials(chatName);
-                const avatarColor = getAvatarColor(chat.id);
+                const colorIdx = getAvatarColorIndex(chat.id);
 
                 return (
-                  <button
+                  <Button
+                    variant="plain"
                     key={chat.id}
                     className={`${styles.chatItem} ${isActive ? styles.chatItemActive : ''} ${isUnread ? styles.chatItemUnread : ''}`}
                     onClick={() => setSelectedContact(chat.id)}
                     data-testid={`chat-item-${chat.id}`}
                   >
                     <div
-                      className={styles.chatItemAvatar}
-                      style={{
-                        background: avatarColor.bg,
-                        color: avatarColor.color,
-                      }}
+                      className={`${styles.chatItemAvatar} ${
+                        styles[`avatarBg${colorIdx}`]
+                      }`}
                     >
                       {chat.avatarURL ? (
                         <img
                           src={chat.avatarURL}
                           alt=""
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            borderRadius: '50%',
-                            objectFit: 'cover',
-                          }}
+                          className={styles.avatarImage}
                         />
                       ) : (
                         initials
@@ -345,7 +328,7 @@ export default function Chat(): JSX.Element {
                         {chat.unreadMessagesCount}
                       </div>
                     )}
-                  </button>
+                  </Button>
                 );
               })
             )}

@@ -16,7 +16,7 @@ Defined in: [src/shared-components/Button/Button.types.ts:32](https://github.com
 
 > `optional` **disabled**: `boolean`
 
-Defined in: [src/shared-components/Button/Button.types.ts:45](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L45)
+Defined in: [src/shared-components/Button/Button.types.ts:47](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L47)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [src/shared-components/Button/Button.types.ts:45](https://github.com
 
 > `optional` **form**: `string`
 
-Defined in: [src/shared-components/Button/Button.types.ts:48](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L48)
+Defined in: [src/shared-components/Button/Button.types.ts:50](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L50)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [src/shared-components/Button/Button.types.ts:48](https://github.com
 
 > `optional` **fullWidth**: `boolean`
 
-Defined in: [src/shared-components/Button/Button.types.ts:36](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L36)
+Defined in: [src/shared-components/Button/Button.types.ts:38](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L38)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [src/shared-components/Button/Button.types.ts:36](https://github.com
 
 > `optional` **href**: `string`
 
-Defined in: [src/shared-components/Button/Button.types.ts:41](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L41)
+Defined in: [src/shared-components/Button/Button.types.ts:43](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L43)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [src/shared-components/Button/Button.types.ts:41](https://github.com
 
 > `optional` **icon**: `ReactNode`
 
-Defined in: [src/shared-components/Button/Button.types.ts:39](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L39)
+Defined in: [src/shared-components/Button/Button.types.ts:41](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L41)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: [src/shared-components/Button/Button.types.ts:39](https://github.com
 
 > `optional` **iconPosition**: [`ButtonIconPosition`](../type-aliases/ButtonIconPosition.md)
 
-Defined in: [src/shared-components/Button/Button.types.ts:40](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L40)
+Defined in: [src/shared-components/Button/Button.types.ts:42](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L42)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: [src/shared-components/Button/Button.types.ts:40](https://github.com
 
 > `optional` **isLoading**: `boolean`
 
-Defined in: [src/shared-components/Button/Button.types.ts:37](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L37)
+Defined in: [src/shared-components/Button/Button.types.ts:39](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L39)
 
 ***
 
@@ -72,7 +72,7 @@ Defined in: [src/shared-components/Button/Button.types.ts:37](https://github.com
 
 > `optional` **loadingText**: `ReactNode`
 
-Defined in: [src/shared-components/Button/Button.types.ts:38](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L38)
+Defined in: [src/shared-components/Button/Button.types.ts:40](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L40)
 
 ***
 
@@ -80,7 +80,7 @@ Defined in: [src/shared-components/Button/Button.types.ts:38](https://github.com
 
 > `optional` **name**: `string`
 
-Defined in: [src/shared-components/Button/Button.types.ts:46](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L46)
+Defined in: [src/shared-components/Button/Button.types.ts:48](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L48)
 
 ***
 
@@ -88,7 +88,7 @@ Defined in: [src/shared-components/Button/Button.types.ts:46](https://github.com
 
 > `optional` **rel**: `string`
 
-Defined in: [src/shared-components/Button/Button.types.ts:43](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L43)
+Defined in: [src/shared-components/Button/Button.types.ts:45](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L45)
 
 #### Overrides
 
@@ -100,7 +100,7 @@ Defined in: [src/shared-components/Button/Button.types.ts:43](https://github.com
 
 > `optional` **size**: [`ButtonSize`](../type-aliases/ButtonSize.md)
 
-Defined in: [src/shared-components/Button/Button.types.ts:35](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L35)
+Defined in: [src/shared-components/Button/Button.types.ts:37](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L37)
 
 ***
 
@@ -108,7 +108,7 @@ Defined in: [src/shared-components/Button/Button.types.ts:35](https://github.com
 
 > `optional` **target**: `string`
 
-Defined in: [src/shared-components/Button/Button.types.ts:42](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L42)
+Defined in: [src/shared-components/Button/Button.types.ts:44](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L44)
 
 ***
 
@@ -116,7 +116,7 @@ Defined in: [src/shared-components/Button/Button.types.ts:42](https://github.com
 
 > `optional` **type**: `"button"` \| `"submit"` \| `"reset"`
 
-Defined in: [src/shared-components/Button/Button.types.ts:44](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L44)
+Defined in: [src/shared-components/Button/Button.types.ts:46](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L46)
 
 ***
 
@@ -124,7 +124,7 @@ Defined in: [src/shared-components/Button/Button.types.ts:44](https://github.com
 
 > `optional` **value**: `string` \| `number` \| readonly `string`[]
 
-Defined in: [src/shared-components/Button/Button.types.ts:47](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L47)
+Defined in: [src/shared-components/Button/Button.types.ts:49](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L49)
 
 ***
 
@@ -132,4 +132,4 @@ Defined in: [src/shared-components/Button/Button.types.ts:47](https://github.com
 
 > `optional` **variant**: [`ButtonVariant`](../type-aliases/ButtonVariant.md)
 
-Defined in: [src/shared-components/Button/Button.types.ts:34](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L34)
+Defined in: [src/shared-components/Button/Button.types.ts:36](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/shared-components/Button/Button.types.ts#L36)

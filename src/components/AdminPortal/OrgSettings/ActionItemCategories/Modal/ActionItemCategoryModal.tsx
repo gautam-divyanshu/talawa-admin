@@ -202,13 +202,12 @@ const CategoryModal: FC<IActionItemCategoryModal> = ({
       <CRUDModalTemplate
         open={isOpen}
         onClose={hide}
-        className={styles.createModal}
         data-testid="actionItemCategoryModal"
         title={t('categoryDetails')}
       >
         <form
           onSubmit={mode === 'create' ? handleCreate : handleEdit}
-          style={{ padding: 8 }}
+          className={styles.createModal}
         >
           {/* Category Name Input */}
           <FormTextField
@@ -252,7 +251,7 @@ const CategoryModal: FC<IActionItemCategoryModal> = ({
           />
 
           {/* Action Buttons */}
-          <div className="gajustify-content-between">
+          <div className={styles.actionButtons}>
             {/* Delete Button - Only show in edit mode */}
             {mode === 'edit' && (
               <Button

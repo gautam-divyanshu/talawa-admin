@@ -37,6 +37,7 @@ import type {
 import type { InterfaceTagFolderChildFoldersQuery } from 'utils/organizationTagsUtils';
 import type { InterfaceTagNodeProps } from 'types/AdminPortal/TagActions/interface';
 import { TAGS_QUERY_DATA_CHUNK_SIZE } from 'utils/organizationTagsUtils';
+import Button from 'shared-components/Button/Button';
 import styles from './HierarchicalNode.module.css';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import InfiniteScrollLoader from 'shared-components/InfiniteScrollLoader/InfiniteScrollLoader';
@@ -128,22 +129,14 @@ const HierarchicalNode: React.FC<InterfaceTagNodeProps> = ({
 
   return (
     <div className={styles.childTags}>
-      <div
-        style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}
-      >
+      <div className={styles.rowHeader}>
         {tag.childTags.totalCount ? (
           <>
-            <button
+            <Button
               type="button"
+              variant="plain"
               onClick={handleTagClick}
               className={styles.expandChildFolders}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                padding: '0 var(--space-2)',
-                cursor: 'pointer',
-                color: 'var(--gray-600)',
-              }}
               data-testid={`expandChildFolders${tag._id}`}
               aria-label={expanded ? t('collapse') : t('expand')}
             >
@@ -151,7 +144,7 @@ const HierarchicalNode: React.FC<InterfaceTagNodeProps> = ({
                 className={`fa ${expanded ? 'fa-chevron-down' : 'fa-chevron-right'}`}
                 aria-hidden="true"
               />
-            </button>
+            </Button>
             <input
               type="checkbox"
               checked={checkedTags.has(tag._id)}
@@ -162,16 +155,14 @@ const HierarchicalNode: React.FC<InterfaceTagNodeProps> = ({
               aria-label={t('selectTag')}
             />
             <i
-              className="fa fa-folder"
-              style={{ color: 'var(--gray-700)' }}
+              className={`fa fa-folder ${styles.rowHeaderIcon}`}
               aria-hidden="true"
             />
           </>
         ) : (
           <>
             <span
-              className={styles.dotSeparator}
-              style={{ visibility: 'hidden' }}
+              className={`${styles.dotSeparator} ${styles.dotSeparatorHidden}`}
             >
               <i className="fa fa-chevron-right" />
             </span>
@@ -184,22 +175,13 @@ const HierarchicalNode: React.FC<InterfaceTagNodeProps> = ({
               aria-label={tag.name}
             />
             <i
-              className="fa fa-tag"
-              style={{ color: 'var(--gray-700)' }}
+              className={`fa fa-tag ${styles.rowHeaderIcon}`}
               aria-hidden="true"
             />
           </>
         )}
 
-        <span
-          style={{
-            fontSize: 'var(--space-5)',
-            fontWeight: 'var(--font-weight-medium)',
-            color: 'var(--gray-700)',
-          }}
-        >
-          {tag.name}
-        </span>
+        <span className={styles.tagLabel}>{tag.name}</span>
       </div>
 
       {expanded && childFoldersLoading && (

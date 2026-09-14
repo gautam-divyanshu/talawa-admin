@@ -22,7 +22,7 @@ Defined in: [src/utils/interfaces.ts:1050](https://github.com/PalisadoesFoundati
 
 > **ancestorTags**: `object`[]
 
-Defined in: [src/utils/interfaces.ts:1059](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1059)
+Defined in: [src/utils/interfaces.ts:1060](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1060)
 
 #### \_id
 
@@ -38,11 +38,19 @@ Defined in: [src/utils/interfaces.ts:1059](https://github.com/PalisadoesFoundati
 
 > **childTags**: `object`
 
-Defined in: [src/utils/interfaces.ts:1056](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1056)
+Defined in: [src/utils/interfaces.ts:1057](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1057)
 
 #### totalCount
 
 > **totalCount**: `number`
+
+***
+
+### createdAt
+
+> **createdAt**: `string`
+
+Defined in: [src/utils/interfaces.ts:1052](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1052)
 
 ***
 
@@ -58,7 +66,7 @@ Defined in: [src/utils/interfaces.ts:1051](https://github.com/PalisadoesFoundati
 
 > **parentTag**: `object`
 
-Defined in: [src/utils/interfaces.ts:1052](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1052)
+Defined in: [src/utils/interfaces.ts:1053](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1053)
 
 #### \_id
 
@@ -70,7 +78,7 @@ Defined in: [src/utils/interfaces.ts:1052](https://github.com/PalisadoesFoundati
 
 > **usersAssignedTo**: `object`
 
-Defined in: [src/utils/interfaces.ts:1053](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1053)
+Defined in: [src/utils/interfaces.ts:1054](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1054)
 
 #### totalCount
 

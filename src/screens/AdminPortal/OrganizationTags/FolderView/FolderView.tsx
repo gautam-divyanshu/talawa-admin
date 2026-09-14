@@ -13,19 +13,19 @@
  * - Includes modals for creating child folders, creating child tags, and managing existing elements.
  * - Renders a unified table list merging both nested tag folders and individual tags.
  *
- * @dependencies
+ * Dependencies:
  * - `@apollo/client` for GraphQL operations.
  * - `react-router` for hierarchical navigation.
  * - `react-i18next` for translations.
  * - Custom components like `TableLoader`, `Toolbar`, `ManageFolderModal`, `ManageTagModal`, and `CreateModal`.
  *
- * @state
+ * State:
  * - `tagName`, `folderName`: Stores inputs for new tags and folders.
  * - `tagNameTouched`, `folderNameTouched`: Tracks input focus for validation errors.
  * - `managedFolder`, `managedTag`: Tracks the active folder or tag being edited/deleted.
  * - `folderSearchName`: Tracks the user's input to filter the tags/folders list.
  *
- * @methods
+ * Methods:
  * - `createTagInFolder`, `createFolderInFolder`: Handlers for triggering GraphQL creation mutations.
  * - `showCreateTagModal`, `hideCreateTagModal`: Toggles tag creation modal.
  * - `showCreateFolderModal`, `hideCreateFolderModal`: Toggles folder creation modal.
@@ -33,7 +33,7 @@
  * - `showManageTagModal`, `hideManageTagModal`: Manages the update modal for a specific child tag.
  * - `redirectToChildFolders`, `redirectToManageTag`: Navigation handlers for drilling down the hierarchy.
  *
- * @errorHandling
+ * Error handling:
  * - Displays error messages via `NotificationToast` or inline error cards on GraphQL failures.
  *
  * @example
@@ -351,7 +351,6 @@ function FolderView(): JSX.Element {
           <div
             className={styles.pageBreadcrumb}
             data-testid="organizationTagsRootBreadcrumb"
-            style={{ marginBottom: 'var(--space-3)' }}
           >
             <Button
               type="button"
@@ -389,50 +388,32 @@ function FolderView(): JSX.Element {
             {folderBreadcrumbs[folderBreadcrumbs.length - 1]?.name ?? t('tags')}
           </p>
         </div>
-        <div
-          className="page-header-actions"
-          style={{ gap: '12px', display: 'flex' }}
-        >
-          <button
-            className="btn btn-secondary"
+        <div className={`page-header-actions ${styles.pageHeaderActions}`}>
+          <Button
+            variant="secondary"
             onClick={showCreateFolderModal}
             data-testid="addFolderBtn"
           >
             + {t('addChildTag')}
-          </button>
-          <button
-            className="btn btn-primary"
+          </Button>
+          <Button
+            variant="primary"
             onClick={showCreateTagModal}
             data-testid="addTagBtn"
           >
             + {t('createTagInFolder')}
-          </button>
+          </Button>
         </div>
       </div>
 
-      <div
-        className="toolbar"
-        style={{
-          display: 'flex',
-          gap: '12px',
-          alignItems: 'center',
-          marginBottom: '20px',
-        }}
-      >
+      <div className={`toolbar ${styles.toolbarRow}`}>
         <input
           type="text"
-          className="search-input"
+          className={`search-input ${styles.searchInput}`}
           placeholder={tCommon('searchByName')}
           value={folderSearchName}
           onChange={(e) => setFolderSearchName(e.target.value.trim())}
           data-testid="searchByName"
-          style={{
-            flex: 1,
-            padding: '8px 12px',
-            border: '1px solid var(--gray-200)',
-            borderRadius: 'var(--radius-md)',
-            fontSize: '13px',
-          }}
         />
       </div>
 
@@ -494,41 +475,31 @@ function FolderView(): JSX.Element {
                         </td>
                         <td>
                           {isFolder ? (
-                            <button
-                              className={`btn btn-link ${styles.folderNameButton}`}
-                              style={{
-                                padding: 0,
-                                textDecoration: 'none',
-                                color: 'var(--primary-color, #10b981)',
-                              }}
+                            <Button
+                              variant="plain"
+                              className={styles.folderNameButton}
                               data-testid="tagName"
                               onClick={() => redirectToChildFolders(row.id)}
                             >
                               <i
                                 className={`fa fa-folder ${styles.nameIcon}`}
-                                style={{ marginRight: 'var(--space-2)' }}
                                 aria-hidden="true"
                               />
                               {row.name}
-                            </button>
+                            </Button>
                           ) : (
-                            <button
-                              className={`btn btn-link ${styles.folderNameButton}`}
-                              style={{
-                                padding: 0,
-                                textDecoration: 'none',
-                                color: 'var(--primary-color, #10b981)',
-                              }}
+                            <Button
+                              variant="plain"
+                              className={styles.folderNameButton}
                               data-testid="tagName"
                               onClick={() => redirectToManageTag(row.id)}
                             >
                               <i
                                 className={`fa fa-tag ${styles.nameIcon}`}
-                                style={{ marginRight: 'var(--space-2)' }}
                                 aria-hidden="true"
                               />
                               {row.name}
-                            </button>
+                            </Button>
                           )}
                         </td>
                         <td>
@@ -563,8 +534,9 @@ function FolderView(): JSX.Element {
                           </span>
                         </td>
                         <td>
-                          <button
-                            className="btn btn-secondary btn-sm"
+                          <Button
+                            variant="secondary"
+                            size="sm"
                             onClick={() =>
                               isFolder
                                 ? showManageFolderModal(row)
@@ -574,12 +546,11 @@ function FolderView(): JSX.Element {
                             aria-label={`${tCommon('edit')} ${row.name ?? ''}`.trim()}
                           >
                             <i
-                              className="fa fa-edit"
-                              style={{ marginRight: 'var(--space-2)' }}
+                              className={`fa fa-edit ${styles.buttonIcon}`}
                               aria-hidden="true"
                             />
                             {tCommon('edit')}
-                          </button>
+                          </Button>
                         </td>
                       </tr>
                     );
@@ -601,7 +572,7 @@ function FolderView(): JSX.Element {
         data-testid="createFolderInFolderModal"
         className={styles.folderCreateModal}
       >
-        <div style={{ marginBottom: 'var(--space-5)' }}>
+        <div className={styles.fieldWrapper}>
           <FormTextField
             name="folderName"
             label={t('folderName')}
@@ -631,7 +602,7 @@ function FolderView(): JSX.Element {
         data-testid="createTagInFolderModal"
         className={styles.folderCreateModal}
       >
-        <div style={{ marginBottom: 'var(--space-5)' }}>
+        <div className={styles.fieldWrapper}>
           <FormTextField
             name="tagName"
             label={t('tagLabel')}

@@ -6,7 +6,7 @@
 
 > `const` **default**: `React.FC`\<[`InterfaceManageTagModalProps`](../../../../../../../types/AdminPortal/Tags/interface/interfaces/InterfaceManageTagModalProps.md)\>
 
-Defined in: [src/components/AdminPortal/Tags/Modals/EditTagModal/EditTagModal.tsx:25](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/components/AdminPortal/Tags/Modals/EditTagModal/EditTagModal.tsx#L25)
+Defined in: [src/components/AdminPortal/Tags/Modals/EditTagModal/EditTagModal.tsx:26](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/components/AdminPortal/Tags/Modals/EditTagModal/EditTagModal.tsx#L26)
 
 Modal component for editing and deleting a tag.
 

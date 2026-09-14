@@ -5,7 +5,8 @@
  */
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import LoadingState from 'shared-components/LoadingState/LoadingState';
+import styles from './DashboardStats.module.css';
+import Button from 'shared-components/Button/Button';
 
 interface InterfaceDashboardStatsProps {
   memberCount: number;
@@ -188,27 +189,11 @@ const DashboardStats: React.FC<InterfaceDashboardStatsProps> = ({
         {[...Array(6)].map((_, i) => (
           <div
             key={i}
-            className="stat-card"
+            className={`stat-card ${styles.fallbackCard}`}
             data-testid="fallback-ui"
-            style={{ minHeight: 120 }}
           >
-            <div
-              style={{
-                height: 14,
-                width: '40%',
-                background: 'var(--gray-200)',
-                borderRadius: 4,
-                marginBottom: 16,
-              }}
-            />
-            <div
-              style={{
-                height: 28,
-                width: '30%',
-                background: 'var(--gray-100)',
-                borderRadius: 4,
-              }}
-            />
+            <div className={styles.skeletonBlock} />
+            <div className={styles.skeletonBlockLarge} />
           </div>
         ))}
       </div>
@@ -218,20 +203,20 @@ const DashboardStats: React.FC<InterfaceDashboardStatsProps> = ({
   return (
     <div className="stats-grid">
       {stats.map((stat) => (
-        <button
+        <Button
+          variant="plain"
           key={stat.testId}
-          className="stat-card"
+          className={`${styles.statCard} stat-card`}
           data-testid={stat.testId}
           onClick={stat.onClick}
           aria-label={stat.label}
-          style={{ border: 'none', textAlign: 'left', cursor: 'pointer' }}
         >
           <div className="stat-card-top">
             <span className="stat-card-label">{stat.label}</span>
             <div className={`stat-card-icon ${stat.icon}`}>{stat.iconSvg}</div>
           </div>
           <div className="stat-card-value">{stat.count}</div>
-        </button>
+        </Button>
       ))}
     </div>
   );

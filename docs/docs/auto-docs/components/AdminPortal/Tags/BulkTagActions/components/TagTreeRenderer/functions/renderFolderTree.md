@@ -6,7 +6,7 @@
 
 > **renderFolderTree**(`folderId`, `depth`, `params`): `Element`[]
 
-Defined in: [src/components/AdminPortal/Tags/BulkTagActions/components/TagTreeRenderer.tsx:104](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/components/AdminPortal/Tags/BulkTagActions/components/TagTreeRenderer.tsx#L104)
+Defined in: [src/components/AdminPortal/Tags/BulkTagActions/components/TagTreeRenderer.tsx:105](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/components/AdminPortal/Tags/BulkTagActions/components/TagTreeRenderer.tsx#L105)
 
 Renders a folder row and, when expanded, its child folder and tag rows.
 

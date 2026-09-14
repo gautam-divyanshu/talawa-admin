@@ -6,4 +6,4 @@
 
 > `const` **default**: `React.FC`\<`InterfaceDashboardStatsProps`\>
 
-Defined in: [src/screens/AdminPortal/OrganizationDashboard/components/DashboardStats.tsx:26](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/screens/AdminPortal/OrganizationDashboard/components/DashboardStats.tsx#L26)
+Defined in: [src/screens/AdminPortal/OrganizationDashboard/components/DashboardStats.tsx:27](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/screens/AdminPortal/OrganizationDashboard/components/DashboardStats.tsx#L27)

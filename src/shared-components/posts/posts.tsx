@@ -56,12 +56,9 @@ import {
 } from 'types/Post/interface';
 import useLocalStorage from 'utils/useLocalstorage';
 import { useTranslation } from 'react-i18next';
-import Add from '@mui/icons-material/Add';
 import Button from 'shared-components/Button';
 import LoadingState from 'shared-components/LoadingState/LoadingState';
 import Toolbar from 'shared-components/Toolbar/Toolbar';
-import PinnedPostsLayout from 'shared-components/pinnedPosts/pinnedPostsLayout';
-import PostCard from 'shared-components/postCard/PostCard';
 import styles from './posts.module.css';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -69,7 +66,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import InfiniteScrollLoader from 'shared-components/InfiniteScrollLoader/InfiniteScrollLoader';
 import CreatePostModal from 'shared-components/posts/createPostModal/createPostModal';
 import PostViewModal from 'shared-components/PostViewModal/PostViewModal';
-import { formatPostForCard } from './helperFunctions';
 
 export default function PostsPage() {
   const { t } = useTranslation('translation', { keyPrefix: 'posts' });
@@ -92,11 +88,6 @@ export default function PostsPage() {
   // i18n-ignore-next-line
   const userId = getItem<string>('userId') ?? getItem<string>('id') ?? null;
   const [searchParams] = useSearchParams();
-
-  const handleStoryClick = (post: InterfacePost) => {
-    setSelectedViewPost(post);
-    postViewModal.open();
-  };
 
   const handleClosePostViewModal = () => {
     postViewModal.close();
@@ -130,13 +121,8 @@ export default function PostsPage() {
     },
   );
 
-  const {
-    data: orgPinnedPostListData,
-    loading: orgPinnedPostListLoading,
-    error: orgPinnedPostListError,
-  } = useQuery<InterfaceOrganizationPostListData>(
-    ORGANIZATION_PINNED_POST_LIST,
-    {
+  const { loading: orgPinnedPostListLoading, error: orgPinnedPostListError } =
+    useQuery<InterfaceOrganizationPostListData>(ORGANIZATION_PINNED_POST_LIST, {
       skip: !currentUrl || !userId,
       variables: {
         input: { id: currentUrl as string },
@@ -144,8 +130,7 @@ export default function PostsPage() {
         last: null,
         userId: userId,
       },
-    },
-  );
+    });
 
   const {
     data: previewPostData,
@@ -332,9 +317,6 @@ export default function PostsPage() {
     );
   }
 
-  const pinnedPosts =
-    orgPinnedPostListData?.organization?.pinnedPosts?.edges ?? [];
-
   /**
    * Helper: get author initials from name string.
    */
@@ -392,11 +374,8 @@ export default function PostsPage() {
         </div>
       </div>
 
-      <div
-        className="toolbar"
-        style={{ display: 'flex', alignItems: 'center', gap: 12 }}
-      >
-        <div style={{ flex: 1 }}>
+      <div className="toolbar">
+        <div className="topbar-spacer">
           <Toolbar
             search={{
               placeholder: t('searchTitle'),
@@ -420,7 +399,8 @@ export default function PostsPage() {
           />
         </div>
         <div className={styles.layoutToggle}>
-          <button
+          <Button
+            variant="plain"
             className={`${styles.layoutBtn} ${layout === 'feed' ? styles.layoutBtnActive : ''}`}
             onClick={() => setLayout('feed')}
             title="Feed view"
@@ -440,8 +420,9 @@ export default function PostsPage() {
               <line x1="3" y1="12" x2="21" y2="12" />
               <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="plain"
             className={`${styles.layoutBtn} ${layout === 'grid' ? styles.layoutBtnActive : ''}`}
             onClick={() => setLayout('grid')}
             title="Grid view"
@@ -462,7 +443,7 @@ export default function PostsPage() {
               <rect x="3" y="14" width="7" height="7" rx="1" />
               <rect x="14" y="14" width="7" height="7" rx="1" />
             </svg>
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -522,8 +503,13 @@ export default function PostsPage() {
                   </div>
                   <div className="post-content">{post.caption ?? ''}</div>
                   {hasImage && (
-                    <div className="post-image-placeholder">
-                      {'\uD83D\uDCF7'} Photo
+                    <div className="post-image-container">
+                      <img
+                        src={post.attachmentURL}
+                        alt="Post attachment"
+                        className="post-image"
+                        crossOrigin="anonymous"
+                      />
                     </div>
                   )}
                   <div className="post-footer">
@@ -591,8 +577,13 @@ export default function PostsPage() {
                     </div>
                     <div className="post-content">{post.caption ?? ''}</div>
                     {hasImage && (
-                      <div className="post-image-placeholder">
-                        {'\uD83D\uDCF7'} Photo
+                      <div className="post-image-container">
+                        <img
+                          src={post.attachmentURL}
+                          alt="Post attachment"
+                          className="post-image"
+                          crossOrigin="anonymous"
+                        />
                       </div>
                     )}
                     <div className="post-footer">

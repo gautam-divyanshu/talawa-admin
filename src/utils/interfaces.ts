@@ -1049,6 +1049,7 @@ export interface InterfaceQueryOrganizationPostListItem {
 export interface InterfaceTagData {
   _id: string;
   name: string;
+  createdAt: string;
   parentTag: { _id: string };
   usersAssignedTo: {
     totalCount: number;
@@ -1065,6 +1066,7 @@ export interface InterfaceTagData {
 export interface InterfaceTagDataPG {
   id: string;
   name: string;
+  createdAt: string;
   parentTag: { id: string };
   usersAssignedTo: {
     totalCount: number;
@@ -1164,6 +1166,7 @@ export type InterfaceQueryUserTagChildTags =
  */
 export interface InterfaceQueryUserTagsAssignedMembers {
   name: string;
+  childTags: InterfaceTagNodeData;
   usersAssignedTo: InterfaceTagMembersData;
   ancestorTags: {
     _id: string;

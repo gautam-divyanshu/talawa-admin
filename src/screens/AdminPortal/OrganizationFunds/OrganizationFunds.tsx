@@ -195,7 +195,7 @@ const organizationFunds = (): JSX.Element => {
           <WarningAmberRounded
             className={`${styles.errorIcon} ${styles.errorIconLarge}`}
           />
-          <h6 style={{ textAlign: 'center' }}>
+          <h6 className={styles.fundError}>
             {t('funds.errorLoadingFundsData')}
             <br />
             {fundError.message}
@@ -250,29 +250,14 @@ const organizationFunds = (): JSX.Element => {
         </div>
       </div>
 
-      <div
-        className="toolbar"
-        style={{
-          display: 'flex',
-          gap: '12px',
-          alignItems: 'center',
-          marginBottom: '20px',
-        }}
-      >
+      <div className="toolbar">
         <input
           type="text"
-          className="search-input"
+          className={styles.searchInput}
           placeholder={t('funds.searchFunds')}
           value={searchText}
           onChange={(e) => setSearchText(e.target.value.trim())}
           data-testid="searchByName"
-          style={{
-            flex: 1,
-            padding: '8px 12px',
-            border: '1px solid var(--gray-200)',
-            borderRadius: 'var(--radius-md)',
-            fontSize: '13px',
-          }}
         />
       </div>
 
@@ -283,7 +268,7 @@ const organizationFunds = (): JSX.Element => {
         <div className="card">
           <EmptyState
             icon={<Search />}
-            message="noResultsFound"
+            message={tCommon('noResultsFound')}
             description={tCommon('noResultsFoundFor', {
               query: `"${searchText}"`,
             })}
@@ -329,8 +314,7 @@ const organizationFunds = (): JSX.Element => {
                     return (
                       <tr key={fundItem.id}>
                         <td
-                          className="cell-primary"
-                          style={{ cursor: 'pointer' }}
+                          className={`cell-primary ${styles.fundNameButton}`}
                           data-testid="fundName"
                           onClick={() => handleClick(fundItem.id)}
                         >
@@ -339,54 +323,33 @@ const organizationFunds = (): JSX.Element => {
                         <td data-testid="fundGoal">
                           {totalGoal > 0 ? (
                             <span>
-                              <span
-                                style={{
-                                  fontWeight: 600,
-                                  color: 'var(--gray-900, #111827)',
-                                }}
-                              >
+                              <span className={styles.totalRaised}>
                                 ${totalRaised.toLocaleString()}
                               </span>
-                              <span
-                                style={{ color: 'var(--gray-400, #9ca3af)' }}
-                              >
+                              <span className={styles.goalAmount}>
                                 {' '}
                                 / ${totalGoal.toLocaleString()}
                               </span>
                             </span>
                           ) : (
-                            <span style={{ color: 'var(--gray-400, #9ca3af)' }}>
-                              —
-                            </span>
+                            <span className={styles.goalAmount}>—</span>
                           )}
                         </td>
                         <td
                           data-testid="fundProgress"
-                          style={{ minWidth: 120 }}
+                          className={styles.progressCell}
                         >
                           {totalGoal > 0 ? (
                             <div>
                               <div className={styles.progressBarBg}>
-                                <div
-                                  className={styles.progressBarFill}
-                                  style={{
-                                    width: `${Math.min(progress, 100)}%`,
-                                  }}
-                                />
+                                <div className={styles.progressBarFill} />
                               </div>
-                              <span
-                                style={{
-                                  fontSize: 12,
-                                  color: 'var(--gray-500, #6b7280)',
-                                }}
-                              >
+                              <span className={styles.progressPercentage}>
                                 {progress}%
                               </span>
                             </div>
                           ) : (
-                            <span style={{ color: 'var(--gray-400, #9ca3af)' }}>
-                              —
-                            </span>
+                            <span className={styles.goalAmount}>—</span>
                           )}
                         </td>
                         <td>
@@ -402,9 +365,7 @@ const organizationFunds = (): JSX.Element => {
                           {nearestEnd ? (
                             dayjs(nearestEnd).format('MMM D, YYYY')
                           ) : (
-                            <span style={{ color: 'var(--gray-400, #9ca3af)' }}>
-                              —
-                            </span>
+                            <span className={styles.goalAmount}>—</span>
                           )}
                         </td>
                         <td>

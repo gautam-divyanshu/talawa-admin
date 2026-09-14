@@ -39,11 +39,10 @@ import { useMemo, useState } from 'react';
 import styles from './Invitations.module.css';
 import { useTranslation } from 'react-i18next';
 import { Navigate, useParams } from 'react-router';
-import { WarningAmberRounded } from '@mui/icons-material';
+import WarningAmberRoundedIcon from '@mui/icons-material/WarningAmberRounded';
+import Stack from '@mui/material/Stack';
 import { TbCalendarEvent } from 'react-icons/tb';
 import { FaUserGroup } from 'react-icons/fa6';
-import { Stack } from '@mui/material';
-
 import useLocalStorage from 'utils/useLocalstorage';
 import { useMutation, useQuery } from '@apollo/client';
 import type { InterfaceVolunteerMembership } from 'utils/interfaces';
@@ -147,8 +146,8 @@ const Invitations = (): JSX.Element => {
     return (
       <div className={`${styles.container} rounded-4 my-3`}>
         <div className={styles.message} data-testid="errorMsg">
-          <WarningAmberRounded className={styles.errorIcon} />
-          <h6 style={{ textAlign: 'center' }}>
+          <WarningAmberRoundedIcon className={styles.errorIcon} />
+          <h6 className={styles.errorHeading}>
             {tErrors('errorLoading', { entity: 'Volunteership Invitations' })}
           </h6>
         </div>
@@ -209,8 +208,8 @@ const Invitations = (): JSX.Element => {
       ) : (
         invitations.map((invite: InterfaceVolunteerMembership) => (
           <div className="p-4  rounded shadow-sm" key={invite.id}>
-            <div style={{ gap: 8 }}>
-              <div style={{ fontWeight: 600 }} data-testid="inviteSubject">
+            <div className={styles.flexGap8}>
+              <div className={styles.fontWeight600} data-testid="inviteSubject">
                 {invite.group && invite.group.id ? (
                   // Group invitation
                   <>
@@ -231,12 +230,12 @@ const Invitations = (): JSX.Element => {
                   </>
                 )}
               </div>
-              <div style={{ gap: 12 }}>
+              <div className={styles.flexGap12}>
                 {invite.group && invite.group.id && (
                   <>
                     <div>
                       <FaUserGroup className="text-secondary" />
-                      <span style={{ color: 'var(--gray-500, #6b7280)' }}>
+                      <span className={styles.mutedText}>
                         {t('group')}:
                       </span>{' '}
                       <span>{invite.group.name} </span>
@@ -246,15 +245,13 @@ const Invitations = (): JSX.Element => {
                 )}
                 <div>
                   <TbCalendarEvent className="text-secondary" size={20} />
-                  <span style={{ color: 'var(--gray-500, #6b7280)' }}>
-                    {t('event')}:
-                  </span>{' '}
+                  <span className={styles.mutedText}>{t('event')}:</span>{' '}
                   <span>{invite.event.name}</span>
                 </div>
                 |
                 <div>
                   <FaRegClock className="text-secondary" />
-                  <span style={{ color: 'var(--gray-500, #6b7280)' }}>
+                  <span className={styles.mutedText}>
                     {t('received')}:
                   </span>{' '}
                   {new Date(invite.createdAt).toLocaleString()}

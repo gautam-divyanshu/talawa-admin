@@ -28,14 +28,14 @@
 }
 
 .childTags {
-  margin: 16px 0;
+  margin: var(--space-5) 0;
 }
 
 .hierarchicalNodeContainer {
   background-color: var(--surface, var(--color-white));
-  border-radius: 16px;
+  border-radius: var(--radius-2xl);
   box-shadow: 0 1px 3px var(--color-black-10);
-  margin: 24px 0;
+  margin: var(--space-7) 0;
   overflow: hidden;
 }
 
@@ -43,15 +43,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
+  padding: var(--space-5) var(--space-6);
   background-color: var(--gray-50, #f9fafb);
-  border-bottom: 1px solid var(--gray-200, #e5e7eb);
+  border-bottom: var(--border-1) solid var(--gray-200, #e5e7eb);
 }
 
 .titleWrapper {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-4);
 }
 
 .iconContainer {
@@ -62,17 +62,17 @@
 }
 
 .nodeTitle {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--color-gray-800);
   margin: 0;
 }
 
 .nodeChildren {
-  padding: 12px 16px;
+  padding: var(--space-4) var(--space-5);
 }
 
 .emptyState {
-  padding: 32px 16px;
+  padding: var(--space-8) var(--space-5);
   text-align: center;
   color: var(--color-gray-500);
 }
@@ -80,12 +80,16 @@
 .loadingState {
   display: flex;
   justify-content: center;
-  padding: 32px;
+  padding: var(--space-8);
 }
 
 .expandChildFolders {
   cursor: pointer;
   margin-inline-end: 32px;
+  background: transparent;
+  border: none;
+  padding: 0 var(--space-2);
+  color: var(--color-gray-600);
 }
 .checkTags {
   cursor: pointer;
@@ -96,9 +100,28 @@
 .dotSeparator {
   margin-inline-end: 32px;
 }
+.dotSeparatorHidden {
+  visibility: hidden;
+}
 .checkTagsExtend {
   cursor: pointer;
   margin-inline: 12px 12px;
+}
+
+.rowHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.rowHeaderIcon {
+  color: var(--color-gray-700);
+}
+
+.tagLabel {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-700);
 }
 
 .simpleLoaderContainer {
@@ -113,11 +136,11 @@
   height: 100%;
 }
 .spinner {
-  width: 24px;
-  height: 24px;
-  border: 2px solid var(--color-gray-300);
+  width: var(--space-7);
+  height: var(--space-7);
+  border: var(--border-2) solid var(--color-gray-300);
   border-top-color: var(--color-blue-600);
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   animation: spin 1s linear infinite;
 }
 

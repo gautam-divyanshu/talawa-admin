@@ -6,7 +6,7 @@
 
 > **default**(): `Element`
 
-Defined in: [src/screens/AdminPortal/Requests/Requests.tsx:78](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/screens/AdminPortal/Requests/Requests.tsx#L78)
+Defined in: [src/screens/AdminPortal/Requests/Requests.tsx:79](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/screens/AdminPortal/Requests/Requests.tsx#L79)
 
 Renders the Membership Requests screen.
 

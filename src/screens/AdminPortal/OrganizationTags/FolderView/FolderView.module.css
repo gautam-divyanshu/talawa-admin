@@ -297,6 +297,15 @@ form label,
 
 .nameIcon {
   color: var(--color-gray-500);
+  margin-right: var(--space-2);
+}
+
+.buttonIcon {
+  margin-right: var(--space-2);
+}
+
+.fieldWrapper {
+  margin-bottom: var(--space-5);
 }
 
 .childFoldersScrollableDiv {
@@ -348,6 +357,26 @@ form label,
   align-items: center;
   gap: var(--space-2);
   margin: 0 0 var(--space-3);
+}
+
+.pageHeaderActions {
+  gap: var(--space-4);
+  display: flex;
+}
+
+.toolbarRow {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.searchInput {
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-1) solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
 }
 
 .breadcrumbLink {

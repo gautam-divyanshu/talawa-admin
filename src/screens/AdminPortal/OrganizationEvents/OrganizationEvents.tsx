@@ -36,9 +36,9 @@ import type { InterfaceEvent } from 'types/Event/interface';
 import { UserRole } from 'types/Event/interface';
 import type { InterfaceRecurrenceRule } from 'utils/recurrenceUtils/recurrenceTypes';
 import CreateEventModal from './CreateEventModal';
-import { Button } from 'shared-components/Button';
 import { useModalState } from 'shared-components/CRUDModalTemplate/hooks/useModalState';
 import SafeBreadcrumbs from 'shared-components/BreadcrumbsComponent/SafeBreadcrumbs';
+import Button from 'shared-components/Button/Button';
 
 // Define the type for an event edge
 interface IEventEdge {
@@ -115,7 +115,7 @@ function organizationEvents(): JSX.Element {
     document.title = t('title');
   }, [t]);
   const createEventModal = useModalState();
-  const [viewType, setViewType] = useState<ViewType>(ViewType.MONTH);
+  const [viewType] = useState<ViewType>(ViewType.MONTH);
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [currentDateOfMonth, setCurrentDateOfMonth] = useState(
@@ -144,10 +144,6 @@ function organizationEvents(): JSX.Element {
       window.clearTimeout(timeoutId);
     };
   }, [currentMonth, currentYear, currentDateOfMonth]);
-
-  const handleChangeView = (item: string | number): void => {
-    setViewType(item as ViewType);
-  };
 
   const handleMonthChange = (month: number, year: number): void => {
     if (month === currentMonth && year === currentYear) {
@@ -437,15 +433,6 @@ function organizationEvents(): JSX.Element {
     }
   }, [eventDataError, orgDataError]);
 
-  // Color palettes for event date strips
-  const dateStripColors = [
-    'linear-gradient(135deg, #3ecf8e, #15803d)',
-    'linear-gradient(135deg, #3b82f6, #2563eb)',
-    'linear-gradient(135deg, #a855f7, #7c3aed)',
-    'linear-gradient(135deg, #f97316, #ea580c)',
-    'linear-gradient(135deg, #6b7280, #4b5563)',
-  ];
-
   return (
     <LoadingState isLoading={orgLoading} variant="spinner" size="lg">
       <>
@@ -482,47 +469,52 @@ function organizationEvents(): JSX.Element {
         </div>
 
         <div className="tabs" role="tablist">
-          <button
+          <Button
+            variant="plain"
             className={`tab ${eventFilter === 'upcoming' ? 'active' : ''}`}
             role="tab"
             aria-selected={eventFilter === 'upcoming'}
             onClick={() => setEventFilter('upcoming')}
           >
             Upcoming
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="plain"
             className={`tab ${eventFilter === 'past' ? 'active' : ''}`}
             role="tab"
             aria-selected={eventFilter === 'past'}
             onClick={() => setEventFilter('past')}
           >
             Past
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="plain"
             className={`tab ${eventFilter === 'recurring' ? 'active' : ''}`}
             role="tab"
             aria-selected={eventFilter === 'recurring'}
             onClick={() => setEventFilter('recurring')}
           >
             Recurring
-          </button>
+          </Button>
         </div>
 
         <div className={styles.viewToggle}>
-          <button
+          <Button
+            variant="plain"
             className={`${styles.viewToggleBtn} ${viewMode === 'calendar' ? styles.viewToggleBtnActive : ''}`}
             onClick={() => setViewMode('calendar')}
             data-testid="viewToggleCalendar"
           >
             Calendar View
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="plain"
             className={`${styles.viewToggleBtn} ${viewMode === 'cards' ? styles.viewToggleBtnActive : ''}`}
             onClick={() => setViewMode('cards')}
             data-testid="viewToggleCards"
           >
             Card View
-          </button>
+          </Button>
         </div>
 
         <div className="toolbar">
@@ -557,15 +549,13 @@ function organizationEvents(): JSX.Element {
         {viewMode === 'cards' &&
           (eventLoading ? (
             <div className="empty-state">
-              <p className="empty-state-text">Loading events...</p>
+              <p className="empty-state-text">{t('loadingEvents')}</p>
             </div>
           ) : filteredEvents.length === 0 ? (
             <div className="empty-state">
               <div className="empty-state-icon">📅</div>
-              <p className="empty-state-title">No events found</p>
-              <p className="empty-state-text">
-                Try a different filter or create a new event.
-              </p>
+              <p className="empty-state-title">{t('noEventsFound')}</p>
+              <p className="empty-state-text">{t('emptyStateText')}</p>
             </div>
           ) : (
             <div className="grid-3">
@@ -588,7 +578,7 @@ function organizationEvents(): JSX.Element {
                     : start
                       ? start.format('MMM D, YYYY')
                       : '';
-                const colorIndex = index % dateStripColors.length;
+                const colorIndex = index % 5;
                 const attendeeCount = event.attendees?.length ?? 0;
                 const isUpcoming =
                   start && start.isAfter(dayjs()) ? true : false;
@@ -596,10 +586,9 @@ function organizationEvents(): JSX.Element {
                 return (
                   <div className="event-card" key={event.id}>
                     <div
-                      className="event-date-strip"
-                      style={{
-                        background: dateStripColors[colorIndex],
-                      }}
+                      className={`event-date-strip ${styles.eventDateStrip} ${
+                        styles[`dateStrip${colorIndex}`]
+                      }`}
                     >
                       <div className="month">{monthLabel}</div>
                       <div className="day">{dayLabel}</div>
@@ -658,10 +647,7 @@ function organizationEvents(): JSX.Element {
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            style={{
-                              verticalAlign: '-2px',
-                              marginRight: '2px',
-                            }}
+                            className={styles.attendeeIcon}
                           >
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                             <circle cx="9" cy="7" r="4" />

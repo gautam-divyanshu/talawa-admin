@@ -1,4 +1,5 @@
 import React, { act } from 'react';
+import dayjs from 'dayjs';
 import { render, screen, waitFor, cleanup } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 import type { MockedResponse } from '@apollo/client/testing';
@@ -34,6 +35,7 @@ const makeTag = (
 ): InterfaceTagData => ({
   _id: id,
   name,
+  createdAt: dayjs().subtract(30, 'days').toISOString(),
   parentTag: { _id: 'parent' },
   usersAssignedTo: { totalCount: 0 },
   childTags: { totalCount: childCount },

@@ -43,11 +43,11 @@
 .scrollContainer {
   height: calc(104px);
   overflow-y: auto;
-  margin-bottom: 24px;
-  border: 1px solid var(--gray-300, #d1d5db);
+  margin-bottom: var(--space-7);
+  border: var(--border-1) solid var(--gray-300, #d1d5db);
   background-color: var(--gray-50, #f9fafb);
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -56,15 +56,15 @@
 .tagBadge {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin: 4px;
-  padding: 6px 12px;
+  gap: var(--space-3);
+  margin: var(--space-2);
+  padding: var(--space-3-5) var(--space-4);
   background-color: var(--surface, var(--color-white));
-  border: 1px solid var(--gray-200, #e5e7eb);
-  border-radius: 20px;
+  border: var(--border-1) solid var(--gray-200, #e5e7eb);
+  border-radius: var(--radius-3xl);
   box-shadow: 0 1px 2px var(--color-black-5);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
   max-width: calc(100% - 2rem);
 }
 
@@ -73,8 +73,8 @@
 }
 
 .searchSection {
-  margin-top: 8px;
-  margin-bottom: 20px;
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-6);
 }
 
 .pathBreadcrumb {
@@ -334,4 +334,18 @@
 
 .indent12 {
   padding-left: calc(var(--space-5) * 12) !important;
+}
+
+.emptyState {
+  margin: auto;
+  color: var(--color-gray-500);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.emptyStateIcon {
+  font-size: var(--font-size-2xl);
+  opacity: 0.5;
 }

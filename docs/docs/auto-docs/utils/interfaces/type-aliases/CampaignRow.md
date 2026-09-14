@@ -6,7 +6,7 @@
 
 > **CampaignRow** = [`InterfaceCampaignInfo`](../interfaces/InterfaceCampaignInfo.md) & `object`
 
-Defined in: [src/utils/interfaces.ts:1432](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1432)
+Defined in: [src/utils/interfaces.ts:1435](https://github.com/PalisadoesFoundation/talawa-admin/blob/main/src/utils/interfaces.ts#L1435)
 
 Defines the campaign table row structure for organization fund campaigns.
 

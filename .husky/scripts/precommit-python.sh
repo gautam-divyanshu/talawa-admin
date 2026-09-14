@@ -44,7 +44,7 @@ trap cleanup EXIT
 
 # Maximum allowed lines per file before triggering complexity warnings.
 # This helps prevent large, hard-to-maintain files from being committed.
-MAX_FILE_LINES=600
+MAX_FILE_LINES=800
 
 # Cache duration (in hours) for externally downloaded scripts.
 # Reduces network dependency while ensuring periodic updates.

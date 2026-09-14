@@ -255,6 +255,7 @@
   },
   "notification": {
     "title": "Notifications",
+    "notifications": "Notifications",
     "allCaughtUp": "You're all caught up!",
     "prev": "Prev",
     "next": "Next",
@@ -344,6 +345,10 @@
     "sl_no": "Sl. No.",
     "accept": "Accept",
     "reject": "Reject",
+    "requested": "Requested",
+    "message": "Message",
+    "actions": "Actions",
+    "pending": "Pending",
     "searchRequests": "Search membership requests",
     "noOrgError": "Organizations not found, please create an organization through dashboard",
     "noRequestsFound": "No Membership Requests Found",
@@ -426,6 +431,15 @@
     "logo": "Logo",
     "social": "Social Media Links",
     "url": "Enter url",
+    "clickToUpload": "Click to upload or drag and drop",
+    "facebookUrl": "Facebook URL",
+    "xUrl": "X (Twitter) URL",
+    "githubUrl": "GitHub URL",
+    "linkedInUrl": "LinkedIn URL",
+    "instagramUrl": "Instagram URL",
+    "youtubeUrl": "YouTube URL",
+    "redditUrl": "Reddit URL",
+    "slackUrl": "Slack URL",
     "profileChangedMsg": "Successfully updated the Profile Details.",
     "resetData": "Successfully reset the Profile Details.",
     "sessionTimeout": {
@@ -582,6 +596,10 @@
     "assignTag": "Assign"
   },
   "manageTag": {
+    "assignedMembersOf": "Assigned Members of",
+    "assignedMembers": "Assigned Members",
+    "membersToAssign": "Members to Assign",
+    "manageTag": "Manage tag",
     "title": "Tag Details",
     "addPeopleToTag": "Add People to tag",
     "viewProfile": "View",
@@ -631,6 +649,8 @@
     "tagActions": "Tag Actions",
     "loadAssignedUsersError": "Error occurred while loading assigned users",
     "sortPeople": "Sort People",
+    "dangerZone": "Danger Zone",
+    "dangerZoneDesc": "Deleting this tag will remove it from all assigned members. This action cannot be undone.",
     "noTagsFound": "No tags found",
     "addMember": "Add Member",
     "removeMember": "Remove Member",
@@ -701,6 +721,9 @@
     "week": "Week",
     "month": "Month",
     "year": "Year",
+    "loadingEvents": "Loading events...",
+    "noEventsFound": "No events found",
+    "emptyStateText": "Try a different filter or create a new event.",
     "startTime": "startTime",
     "endTime": "endTime",
     "eventLocation": "eventLocation",
@@ -1221,6 +1244,9 @@
     "noContentAvailable": "No Content Available"
   },
   "blockUnblockUser": {
+    "actions": "Actions",
+    "reason": "Reason",
+    "blockedDate": "Blocked date",
     "title": "Block/Unblock User",
     "manageBlockedUsers": "Users who have been blocked from the organization",
     "pageName": "Block/Unblock",
@@ -1248,6 +1274,7 @@
     "errorLoadingMembers": "Error occurred while loading members data"
   },
   "eventManagement": {
+    "events": "Events",
     "name": "Event Management Dashboard",
     "title": "Event Management Dashboard",
     "dashboard": "Dashboard",
@@ -1605,7 +1632,8 @@
     "searchByName": "Search by Name",
     "searchOrganizations": "Search Organization",
     "loading": "Loading...",
-    "title": "Organizations"
+    "title": "Organizations",
+    "discoverOrganizations": "Discover and join new organizations"
   },
   "userSidebarOrg": {
     "yourOrganizations": "Your Organizations",
@@ -1827,9 +1855,12 @@
     "tagCreationFailed": "Tag creation failed"
   },
   "userEvents": {
+    "createEventTitle": "Create Event",
     "title": "Events",
     "name": "Events",
     "nothingToShow": "Nothing to show here.",
+    "noEventsFound": "No events found",
+    "emptyStateText": "Try a different filter or create a new event.",
     "createEvent": "Create Event",
     "recurring": "Recurring Event",
     "listView": "List View",
@@ -1948,6 +1979,7 @@
     "advertisementLoading": "Loading advertisements..."
   },
   "userChat": {
+    "noChats": "no chats",
     "starredMessages": "Starred Messages",
     "all": "All",
     "unread": "Unread",
@@ -2363,6 +2395,7 @@
     "volunteerScope": "Volunteer Scope"
   },
   "userVolunteer": {
+    "volunteerManagement": "Volunteer Management",
     "title": "Volunteership",
     "name": "Title",
     "upcomingEvents": "Upcoming Events",
@@ -2604,6 +2637,8 @@
     "invalidCapacity": "Capacity must be a positive number!"
   },
   "manageTags": {
+    "assignedMembersOf": "Assigned Members of",
+    "manageTag": "Manage tag",
     "loadAssignedUsersError": "Error occurred while loading assigned users",
     "sortPeople": "Sort People",
     "unassign": "Unassign",

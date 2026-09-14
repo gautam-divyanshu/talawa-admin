@@ -51,6 +51,7 @@ import TableLoader from 'shared-components/TableLoader/TableLoader';
 import { useTranslation } from 'react-i18next';
 import { errorHandler } from 'utils/errorHandler';
 import { useParams } from 'react-router';
+import styles from './BlockUser.module.css';
 
 import type {
   InterfaceUserPg,
@@ -61,6 +62,7 @@ import EmptyState from 'shared-components/EmptyState/EmptyState';
 import { useTableData } from 'shared-components/DataTable/hooks/useTableData';
 import ErrorPanel from 'shared-components/ErrorPanel';
 import { OrganizationMembershipRole } from 'types/AdminPortal/OrganizationMembershipRole/interface';
+import Button from 'shared-components/Button/Button';
 
 // BlockUserRow type removed - no longer needed with inline table rendering
 
@@ -272,14 +274,7 @@ const BlockUser = (): JSX.Element => {
         <div className="page-header-left">
           <h1 className="page-title">
             {t('title')}{' '}
-            <span
-              className="badge badge-red"
-              style={{
-                fontSize: '13px',
-                verticalAlign: 'middle',
-                marginLeft: '8px',
-              }}
-            >
+            <span className={`badge badge-red ${styles.blockedCountBadge}`}>
               {blockedUsers.length}
             </span>
           </h1>
@@ -287,45 +282,22 @@ const BlockUser = (): JSX.Element => {
         </div>
       </div>
 
-      <div
-        className="toolbar"
-        data-testid="testcomp"
-        style={{
-          display: 'flex',
-          gap: '12px',
-          alignItems: 'center',
-          marginBottom: '20px',
-        }}
-      >
+      <div className={`toolbar ${styles.toolbar}`} data-testid="testcomp">
         <input
           type="text"
-          className="search-input"
+          className={`search-input ${styles.searchInput}`}
           placeholder={t('searchByName')}
           value={searchTerm}
           onChange={(e) => handleSearch(e.target.value)}
           data-testid="searchByName"
-          style={{
-            flex: 1,
-            padding: '8px 12px',
-            border: '1px solid var(--gray-200)',
-            borderRadius: 'var(--radius-md)',
-            fontSize: '13px',
-          }}
         />
         <select
-          className="filter-dropdown"
+          className={`filter-dropdown ${styles.filterSelect}`}
           value={showBlockedMembers ? 'blockedUsers' : 'allMembers'}
           onChange={(e) =>
             setShowBlockedMembers(e.target.value === 'blockedUsers')
           }
           data-testid="blockUserView-filter"
-          style={{
-            padding: '8px 12px',
-            border: '1px solid var(--gray-200)',
-            borderRadius: 'var(--radius-md)',
-            fontSize: '13px',
-            background: 'var(--surface)',
-          }}
         >
           <option value="allMembers">{t('allMembers')}</option>
           <option value="blockedUsers">{t('blockedUsers')}</option>
@@ -380,7 +352,8 @@ const BlockUser = (): JSX.Element => {
                           <td>{''}</td>
                           <td>
                             {showBlockedMembers ? (
-                              <button
+                              <Button
+                                variant="plain"
                                 className="btn btn-secondary btn-sm"
                                 data-testid={`unblockUserBtn-${user.id}`}
                                 aria-label={t('unblock') + ': ' + user.name}
@@ -389,9 +362,10 @@ const BlockUser = (): JSX.Element => {
                                 }}
                               >
                                 {t('unblock')}
-                              </button>
+                              </Button>
                             ) : (
-                              <button
+                              <Button
+                                variant="plain"
                                 className="btn btn-secondary btn-sm"
                                 data-testid={`blockUserBtn-${user.id}`}
                                 aria-label={t('block') + ': ' + user.name}
@@ -400,7 +374,7 @@ const BlockUser = (): JSX.Element => {
                                 }}
                               >
                                 {t('block')}
-                              </button>
+                              </Button>
                             )}
                           </td>
                         </tr>

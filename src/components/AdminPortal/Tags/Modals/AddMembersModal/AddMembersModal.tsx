@@ -60,7 +60,6 @@ import type {
 import { TAGS_QUERY_DATA_CHUNK_SIZE } from 'utils/organizationTagsUtils';
 import { ErrorBoundaryWrapper } from 'shared-components/ErrorBoundaryWrapper/ErrorBoundaryWrapper';
 import { NotificationToast } from 'components/NotificationToast/NotificationToast';
-import { PAGE_SIZE } from 'types/ReportingTable/utils';
 
 const AddMembersModal: React.FC<InterfaceAddPeopleToTagProps> = ({
   addPeopleToTagModalIsOpen,
@@ -266,30 +265,31 @@ const AddMembersModal: React.FC<InterfaceAddPeopleToTagProps> = ({
           <div className={styles.scrollContainer}>
             <div className={styles.badgeContainer}>
               {assignToMembers.length === 0 ? (
-                <div style={{ margin: 'auto', color: 'var(--gray-500)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                  <i className="fa fa-users" style={{ fontSize: '24px', opacity: 0.5 }} />
+                <div className={styles.emptyState}>
+                  <i className={`fa fa-users ${styles.emptyStateIcon}`} />
                   <span>{t('noOneSelected')}</span>
                 </div>
               ) : (
                 assignToMembers.map((member) => (
                   <div key={member._id} className={styles.memberBadge}>
                     <span>{member.name}</span>
-                    <button
+                    <Button
                       type="button"
+                      variant="plain"
                       className={styles.removeMemberChipButton}
                       onClick={() => removeMember(member._id)}
                       data-testid="clearSelectedMember"
                       aria-label={t('removeMember')}
                     >
                       <i className="fa fa-times" aria-hidden="true" />
-                    </button>
+                    </Button>
                   </div>
                 ))
               )}
             </div>
           </div>
 
-          <div style={{ marginBottom: '20px' }}>
+          <div className={styles.searchBarWrapper}>
             <SearchBar
               placeholder={tCommon('searchByName')}
               value={memberToAssignToSearchInput}
@@ -320,14 +320,11 @@ const AddMembersModal: React.FC<InterfaceAddPeopleToTagProps> = ({
                 <table className="data-table" aria-label={t('membersToAssign')}>
                   <thead>
                     <tr>
-                      <th
-                        scope="col"
-                        style={{ width: 'calc(48px)', textAlign: 'center' }}
-                      >
+                      <th scope="col" className={styles.serialNumberColumn}>
                         {tCommon('sl_no')}
                       </th>
                       <th scope="col">{t('userName')}</th>
-                      <th scope="col" style={{ textAlign: 'center' }}>
+                      <th scope="col" className={styles.centeredColumn}>
                         {t('actions')}
                       </th>
                     </tr>
@@ -339,7 +336,7 @@ const AddMembersModal: React.FC<InterfaceAddPeopleToTagProps> = ({
                       );
                       return (
                         <tr key={row._id}>
-                          <td style={{ textAlign: 'center' }}>
+                          <td className={styles.centeredColumn}>
                             {rowIndexMap.get(row._id) ?? 0}.
                           </td>
                           <td>
@@ -352,9 +349,11 @@ const AddMembersModal: React.FC<InterfaceAddPeopleToTagProps> = ({
                               {row.name ?? ''}
                             </span>
                           </td>
-                          <td style={{ textAlign: 'center' }}>
-                            <button
+                          <td className={styles.centeredColumn}>
+                            <Button
                               type="button"
+                              variant={isToBeAssigned ? 'secondary' : 'primary'}
+                              size="sm"
                               onClick={
                                 isToBeAssigned
                                   ? undefined
@@ -365,7 +364,6 @@ const AddMembersModal: React.FC<InterfaceAddPeopleToTagProps> = ({
                                   ? 'selectedMemberBtn'
                                   : 'selectMemberBtn'
                               }
-                              className={`btn btn-sm ${isToBeAssigned ? 'btn-secondary' : 'btn-primary'}`}
                               aria-label={t('addMember')}
                               disabled={isToBeAssigned}
                             >
@@ -374,7 +372,7 @@ const AddMembersModal: React.FC<InterfaceAddPeopleToTagProps> = ({
                               ) : (
                                 '+'
                               )}
-                            </button>
+                            </Button>
                           </td>
                         </tr>
                       );
