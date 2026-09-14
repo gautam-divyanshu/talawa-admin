@@ -33,11 +33,11 @@ import {
   IconPosts,
   IconRequests,
   IconSettings,
-  IconTags,
   IconUsers,
   IconVenues,
   IconBlocked,
 } from './icons';
+import IconTags from './IconTags';
 import { NavItem } from './NavItem';
 
 interface InterfaceAdminSidebarProps {

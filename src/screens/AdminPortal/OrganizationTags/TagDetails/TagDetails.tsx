@@ -308,7 +308,7 @@ function TagDetails(): JSX.Element {
             onClick={addPeopleToTagModal.open}
             data-testid="addPeopleToTagBtn"
           >
-            + {t('addPeopleToTag')}
+            {`+ ${t('addPeopleToTag')}`}
           </Button>
         </div>
       </div>
@@ -358,7 +358,7 @@ function TagDetails(): JSX.Element {
                                 filteredAssignedMembers.length
                             }
                             onChange={handleSelectAll}
-                            aria-label="Select All"
+                            aria-label={tCommon('selectAllOnPage')}
                           />
                         </th>
                         <th scope="col">#</th>
@@ -381,7 +381,9 @@ function TagDetails(): JSX.Element {
                               type="checkbox"
                               checked={selectedMemberKeys.has(row._id)}
                               onChange={() => handleSelectRow(row._id)}
-                              aria-label={`Select ${row.name}`}
+                              aria-label={tCommon('selectRow', {
+                                rowKey: row.name,
+                              })}
                             />
                           </td>
                           <td>

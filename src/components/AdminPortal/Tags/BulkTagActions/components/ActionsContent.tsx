@@ -94,12 +94,7 @@ const ActionsContent: React.FC<InterfaceTagActionsContentProps> = ({
       >
         {!hasAssignees ? (
           <div
-            style={{
-              margin: 'auto',
-              color: 'var(--gray-500)',
-              padding: 'var(--space-5)',
-              textAlign: 'center',
-            }}
+            className={styles.emptyStateMessage}
             data-testid="noPeopleFoundMessage"
           >
             {manageTagTranslator('noPeopleFound')}
@@ -110,24 +105,14 @@ const ActionsContent: React.FC<InterfaceTagActionsContentProps> = ({
           </div>
         ) : rootFoldersError ? (
           <div
-            style={{
-              margin: 'auto',
-              color: 'var(--red-500)',
-              padding: 'var(--space-5)',
-              textAlign: 'center',
-            }}
+            className={styles.errorStateMessage}
             data-testid="tagsQueryErrorMessage"
           >
             {rootFoldersError.message}
           </div>
         ) : rootFolderIds.length === 0 ? (
           <div
-            style={{
-              margin: 'auto',
-              color: 'var(--gray-500)',
-              padding: 'var(--space-5)',
-              textAlign: 'center',
-            }}
+            className={styles.emptyStateMessage}
             data-testid="noTagsFoundMessage"
           >
             {manageTagTranslator('noTagsFound')}

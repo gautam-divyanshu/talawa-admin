@@ -237,7 +237,7 @@ function RootView(): JSX.Element {
             data-testid="createTagBtn"
             aria-label={t('createTag')}
           >
-            + {t('createTag')}
+            {`+ ${t('createTag')}`}
           </Button>
         </div>
       </div>

@@ -394,14 +394,14 @@ function FolderView(): JSX.Element {
             onClick={showCreateFolderModal}
             data-testid="addFolderBtn"
           >
-            + {t('addChildTag')}
+            {`+ ${t('addChildTag')}`}
           </Button>
           <Button
             variant="primary"
             onClick={showCreateTagModal}
             data-testid="addTagBtn"
           >
-            + {t('createTagInFolder')}
+            {`+ ${t('createTagInFolder')}`}
           </Button>
         </div>
       </div>
